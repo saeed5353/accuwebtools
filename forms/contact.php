@@ -1,9 +1,9 @@
 <?php
 // Database connection config
 $host = "localhost";
-$user = "root";       // Change if you have a different user
-$password = "";       // Change if your MySQL user has a password
-$database = "toolsdb";
+$user = "u915156841_tech";       
+$password = "cc%8cVr3NQ";       
+$database = "u915156841_accuwebtools";
 
 // Connect to MySQL
 $conn = new mysqli($host, $user, $password, $database);
