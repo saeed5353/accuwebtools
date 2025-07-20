@@ -4,9 +4,9 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Index - Bootslander Bootstrap Template</title>
-  <meta name="description" content="">
-  <meta name="keywords" content="">
+  <title>AccuWebTools - Accurate & Free Online Tools for Everyday Tasks</title>
+  <meta name="description" content="AccuWebTools offers free, accurate, and easy-to-use online tools including PDF mergers, image-to-text converters, YouTube thumbnail downloaders, age calculators, and more.">
+  <meta name="keywords" content="free online tools, pdf merger, image to text, youtube thumbnail downloader, age calculator, word counter, text tools, convert pdf, extract text from image, web utilities">
 
   <!-- Favicons -->
   <link href="../assets/img/favicon.png" rel="icon">
@@ -91,9 +91,9 @@
               <i class="bi bi-envelope flex-shrink-0"></i>
               <div>
                 <h3>Email Us</h3>
-                <p>info@example.com</p>
+                <p>info@accuwebtools.com</p>
               </div>
-            </div><!-- End Info Item -->
+            </div>
 
           </div>
 

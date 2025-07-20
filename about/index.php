@@ -84,7 +84,7 @@
       <div class="container" data-aos="fade-up" data-aos-delay="100">
         <div class="row d-flex justify-content-center">
           <div class="col-lg-8">
-            <p>Welcome to [Your Website Name] – your all-in-one online utility hub!</p>
+            <p>Welcome to AccuWebTools – your all-in-one online utility hub!</p>
 
             <p>We provide a collection of fast, free, and easy-to-use tools designed to make your digital tasks simpler. Whether you're a content creator looking to grab high-quality thumbnails from YouTube or Facebook, a developer needing a quick and reliable JSON formatter, or just someone who loves convenient web tools – we've got you covered.</p>
 
@@ -132,85 +132,3 @@
 </body>
 
 </html>
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    try {
-      const urlInput = document.getElementById('youtube-url');
-      const fetchBtn = document.getElementById('fetch-btn');
-      const resultContainer = document.getElementById('result-container');
-      const thumbnailImage = document.getElementById('thumbnail-image');
-      const hdDownload = document.getElementById('hd-download');
-      const sdDownload = document.getElementById('sd-download');
-      
-      if (!urlInput || !fetchBtn || !resultContainer || !thumbnailImage || !hdDownload || !sdDownload) {
-        throw new Error('One or more required elements are missing from the page');
-      }
-
-      let currentVideoId = null;
-
-      urlInput.addEventListener('input', () => {
-        fetchBtn.disabled = !urlInput.checkValidity();
-      });
-
-      fetchBtn.addEventListener('click', async () => {
-        const videoUrl = urlInput.value;
-        currentVideoId = extractVideoId(videoUrl);
-        
-        if(currentVideoId) {
-          const hdUrl = `https://img.youtube.com/vi/${currentVideoId}/maxresdefault.jpg`;
-          thumbnailImage.src = hdUrl;
-          resultContainer.style.display = 'block';
-          resultContainer.scrollIntoView({ behavior: 'smooth' });
-        } else {
-          alert('Please enter a valid YouTube URL');
-        }
-      });
-
-      hdDownload.addEventListener('click', () => downloadThumbnail('maxresdefault', 'hd'));
-      sdDownload.addEventListener('click', () => downloadThumbnail('hqdefault', 'sd'));
-
-      async function downloadThumbnail(type, quality) {
-        if(!currentVideoId) {
-          alert('Please fetch a thumbnail first');
-          return;
-        }
-        
-        const imgUrl = `https://img.youtube.com/vi/${currentVideoId}/${type}.jpg`;
-        const fileName = `yt_thumbnail_${currentVideoId}_${quality}.jpg`;
-
-        try {
-          // Fetch the image first
-          const response = await fetch(imgUrl);
-          const blob = await response.blob();
-          const blobUrl = URL.createObjectURL(blob);
-          
-          // Create download link
-          const link = document.createElement('a');
-          link.href = blobUrl;
-          link.download = fileName;
-          document.body.appendChild(link);
-          link.click();
-          
-          // Clean up
-          setTimeout(() => {
-            document.body.removeChild(link);
-            URL.revokeObjectURL(blobUrl);
-          }, 100);
-        } catch (error) {
-          console.error('Download failed:', error);
-          alert('Failed to download thumbnail. Please try again.');
-        }
-      }
-
-      function extractVideoId(url) {
-        if (!url) return null;
-        const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
-        const match = url.match(regExp);
-        return (match && match[2].length === 11) ? match[2] : null;
-      }
-
-    } catch (error) {
-      console.error('Error initializing thumbnail downloader:', error);
-    }
-  });
-</script>
