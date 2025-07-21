@@ -51,8 +51,16 @@
       display: none; /* Hide but keep for SEO */
     }
   </style>
-</head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-B9CT86JSTC"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
 
+    gtag('config', 'G-B9CT86JSTC');
+  </script>
+</head>
 <body class="starter-page-page">
    <?php include '../includes/header.php'; ?>
    <main class="main">
