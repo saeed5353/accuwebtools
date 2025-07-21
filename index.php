@@ -9,8 +9,8 @@
   <meta name="keywords" content="free online tools, pdf merger, image to text, youtube thumbnail downloader, age calculator, word counter, text tools, convert pdf, extract text from image, web utilities">
 
   <!-- Favicons -->
-  <link href="assets/img/favicon.png" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="assets/img/favicon.png" rel="icon" height="100px">
+  <!-- <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon"> -->
 
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com" rel="preconnect">
