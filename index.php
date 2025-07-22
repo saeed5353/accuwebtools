@@ -38,16 +38,13 @@
 </head>
 
 <body class="index-page">
-
    <header id="header" class="header d-flex align-items-center fixed-top">
     <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
-
       <a href="index.php" class="logo d-flex align-items-center">
         <!-- Uncomment the line below if you also wish to use an image logo -->
         <img src="assets/img/logo.png" alt="">
         <h1 class="sitename">AccuWebTools</h1>
       </a>
-
       <nav id="navmenu" class="navmenu">
         <ul>
           <li><a href="index.php">Home</a></li>
@@ -56,7 +53,6 @@
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
-
     </div>
     <style>
       .floating-shapes {
@@ -107,33 +103,42 @@
         color: white;
       }
       
-      .featured-tools {
-        padding: 100px 0;
+     .tool-card {
+        transition: all 0.2s ease;
+        border: 1px solid rgba(0,0,0,0.1);
+        box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        height: 100%;
       }
       
-      .tool-badge {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        background: #ff6b6b;
-        color: white;
-        padding: 5px 10px;
-        border-radius: 50px;
-        font-size: 0.8rem;
-        font-weight: 600;
-      }
       .tool-card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        border-color: rgba(110, 142, 251, 0.3);
       }
       
-      .tool-card .card-body {
-        padding: 8px;
-        text-align: center;
+      .tool-icon {
+        margin-bottom: 10px;
       }
-       .tool-icon {
-        font-size: 3rem;
-        margin-bottom: 20px;
+      
+      .card-title {
+        font-size: 1rem;
+        font-weight: 600;
+        color: #333;
+      }
+      
+      /* Better mobile spacing */
+      @media (max-width: 767.98px) {
+        .featured-tools {
+          padding: 50px 0;
+        }
+        
+        .col-6 {
+          padding: 5px;
+        }
+        
+        .tool-card {
+          margin-bottom: 0;
+        }
       }
       .testimonial-card {
         background: white;
@@ -199,132 +204,97 @@
           <h2>Our Popular Tools</h2>
           <p class="lead">Handpicked utilities to boost your productivity</p>
         </div>
-        <div class="row gy-4">
-          <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
-            <div class="card tool-card h-100">
-              <!-- <span class="tool-badge">Popular</span> -->
-              <div class="card-body">
-                <i class="bi bi-youtube tool-icon" style="color: #FF0000;"></i>
-                <h4 class="card-title">YouTube Thumbnail Downloader</h4>
-                <p class="card-text">Get high-quality thumbnails from any YouTube video in seconds.</p>
-                <a href="youtube-thumbnail-downloader" class="btn btn-gradient stretched-link">Use Tool</a>
+        <div class="row gy-3"> <!-- Changed gy-4 to gy-3 for tighter spacing -->
+          <div class="col-lg-3 col-md-4 col-6" data-aos="fade-up" data-aos-delay="100"> <!-- Added col-6 for better mobile -->
+            <a href="youtube-thumbnail-downloader" class="card tool-card h-100 text-decoration-none"> <!-- Made entire card clickable -->
+              <div class="card-body p-3 text-center"> <!-- Reduced padding with p-3 -->
+                <i class="bi bi-youtube tool-icon" style="color: #FF0000; font-size: 2rem;"></i> <!-- Reduced icon size -->
+                <h5 class="card-title mb-0">YouTube Thumbnail</h5> <!-- Changed to h5 and removed margin -->
               </div>
-            </div>
+            </a>
           </div>
 
-          <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
-            <div class="card tool-card h-100">
-              <div class="card-body">
-                <i class="bi bi-key tool-icon" style="color: #5578ff;"></i>
-                <h4 class="card-title">Password Generator</h4>
-                <p class="card-text">Create strong, secure passwords with customizable options.</p>
-                <a href="password-generator" class="btn btn-gradient stretched-link">Use Tool</a>
+          <div class="col-lg-3 col-md-4 col-6" data-aos="fade-up" data-aos-delay="200">
+            <a href="password-generator" class="card tool-card h-100 text-decoration-none">
+              <div class="card-body p-3 text-center">
+                <i class="bi bi-key tool-icon" style="color: #5578ff; font-size: 2rem;"></i>
+                <h5 class="card-title mb-0">Password Generator</h5>
               </div>
-            </div>
+            </a>
           </div>
 
-          <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="300">
-            <div class="card tool-card h-100">
-              <!-- <span class="tool-badge">New</span> -->
-              <div class="card-body">
-                <i class="bi bi-braces tool-icon" style="color: #FF5733;"></i>
-                <h4 class="card-title">JSON Formatter</h4>
-                <p class="card-text">Beautify and validate your JSON data with our advanced formatter.</p>
-                <a href="json-formatter" class="btn btn-gradient stretched-link">Use Tool</a>
+          <div class="col-lg-3 col-md-4 col-6" data-aos="fade-up" data-aos-delay="300">
+            <a href="json-formatter" class="card tool-card h-100 text-decoration-none">
+              <div class="card-body p-3 text-center">
+                <i class="bi bi-braces tool-icon" style="color: #FF5733; font-size: 2rem;"></i>
+                <h5 class="card-title mb-0">JSON Formatter</h5>
               </div>
-            </div>
+            </a>
           </div>
-          <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="300">
-            <div class="card tool-card h-100">
-              <!-- <span class="tool-badge">New</span> -->
-              <div class="card-body">
-                <i class="bi bi-code-slash tool-icon" style="color: #6f42c1;"></i>
-                <h4 class="card-title">XML Formatter</h4>
-                <p class="card-text">Format, beautify, and validate your XML data with ease.</p>
-                <a href="xml-formatter" class="btn btn-gradient stretched-link">Use Tool</a>
+          
+          <div class="col-lg-3 col-md-4 col-6" data-aos="fade-up" data-aos-delay="300">
+            <a href="xml-formatter" class="card tool-card h-100 text-decoration-none">
+              <div class="card-body p-3 text-center">
+                <i class="bi bi-code-slash tool-icon" style="color: #6f42c1; font-size: 2rem;"></i>
+                <h5 class="card-title mb-0">XML Formatter</h5>
               </div>
-            </div>
+            </a>
           </div>
 
-          <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="400">
-            <div class="card tool-card h-100">
-              <div class="card-body">
-                <i class="bi bi-qr-code tool-icon" style="color: #4CAF50;"></i>
-                <h4 class="card-title">QR Code Generator</h4>
-                <p class="card-text">Create customizable QR codes for URLs, text, contact info and more.</p>
-                <a href="qr-generator" class="btn btn-gradient stretched-link">Use Tool</a>
+          <div class="col-lg-3 col-md-4 col-6" data-aos="fade-up" data-aos-delay="400">
+            <a href="qr-generator" class="card tool-card h-100 text-decoration-none">
+              <div class="card-body p-3 text-center">
+                <i class="bi bi-qr-code tool-icon" style="color: #4CAF50; font-size: 2rem;"></i>
+                <h5 class="card-title mb-0">QR Code Generator</h5>
               </div>
-            </div>
+            </a>
           </div>
 
-          <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
-            <div class="card tool-card h-100">
-              <div class="card-body">
-                <i class="bi bi-fonts tool-icon" style="color: #28a745;"></i>
-                <h4 class="card-title">Word Counter</h4>
-                <p class="card-text">Count words, characters, sentences and analyze reading time.</p>
-                <a href="word-counter" class="btn btn-gradient stretched-link">Use Tool</a>
+          <div class="col-lg-3 col-md-4 col-6" data-aos="fade-up" data-aos-delay="100">
+            <a href="word-counter" class="card tool-card h-100 text-decoration-none">
+              <div class="card-body p-3 text-center">
+                <i class="bi bi-fonts tool-icon" style="color: #28a745; font-size: 2rem;"></i>
+                <h5 class="card-title mb-0">Word Counter</h5>
               </div>
-            </div>
+            </a>
           </div>
 
-          <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
-            <div class="card tool-card h-100">
-              <div class="card-body">
-                <i class="bi bi-terminal tool-icon" style="color: #4caf50;"></i>
-                <h4 class="card-title">SQL Formatter</h4>
-                <p class="card-text">Format and beautify your SQL queries for better readability.</p>
-                <a href="sql-formatter" class="btn btn-gradient stretched-link">Use Tool</a>
+          <div class="col-lg-3 col-md-4 col-6" data-aos="fade-up" data-aos-delay="200">
+            <a href="sql-formatter" class="card tool-card h-100 text-decoration-none">
+              <div class="card-body p-3 text-center">
+                <i class="bi bi-terminal tool-icon" style="color: #4caf50; font-size: 2rem;"></i>
+                <h5 class="card-title mb-0">SQL Formatter</h5>
               </div>
-            </div>
+            </a>
           </div>
 
-          <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="300">
-            <div class="card tool-card h-100">
-              <div class="card-body">
-                <i class="bi bi-card-image tool-icon" style="color: #e361ff;"></i>
-                <h4 class="card-title">Image to Text</h4>
-                <p class="card-text">Extract text from images using advanced OCR technology.</p>
-                <a href="image-to-text" class="btn btn-gradient stretched-link">Use Tool</a>
+          <div class="col-lg-3 col-md-4 col-6" data-aos="fade-up" data-aos-delay="300">
+            <a href="image-to-text" class="card tool-card h-100 text-decoration-none">
+              <div class="card-body p-3 text-center">
+                <i class="bi bi-card-image tool-icon" style="color: #e361ff; font-size: 2rem;"></i>
+                <h5 class="card-title mb-0">Image to Text</h5>
               </div>
-            </div>
+            </a>
           </div>
 
-          <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="400">
-            <div class="card tool-card h-100">
-              <div class="card-body">
-                <i class="bi bi-hourglass-split tool-icon" style="color: #ff6f61;"></i>
-                <h4 class="card-title">Age Calculator</h4>
-                <p class="card-text">Calculate age in years, months, days or even seconds!</p>
-                <a href="age-calculator" class="btn btn-gradient stretched-link">Use Tool</a>
+          <div class="col-lg-3 col-md-4 col-6" data-aos="fade-up" data-aos-delay="400">
+            <a href="age-calculator" class="card tool-card h-100 text-decoration-none">
+              <div class="card-body p-3 text-center">
+                <i class="bi bi-hourglass-split tool-icon" style="color: #ff6f61; font-size: 2rem;"></i>
+                <h5 class="card-title mb-0">Age Calculator</h5>
               </div>
-            </div>
+            </a>
           </div>
-          <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="500">
-            <div class="card tool-card h-100">
-              <div class="card-body">
-                <i class="bi bi-files tool-icon" style="color: #007bff;"></i>
-                <h4 class="card-title">Merge PDF</h4>
-                <p class="card-text">Combine multiple PDF files into a single document quickly and easily.</p>
-                <a href="merge-pdf" class="btn btn-gradient stretched-link">Use Tool</a>
+          
+          <div class="col-lg-3 col-md-4 col-6" data-aos="fade-up" data-aos-delay="500">
+            <a href="merge-pdf" class="card tool-card h-100 text-decoration-none">
+              <div class="card-body p-3 text-center">
+                <i class="bi bi-files tool-icon" style="color: #007bff; font-size: 2rem;"></i>
+                <h5 class="card-title mb-0">Merge PDF</h5>
               </div>
-            </div>
+            </a>
           </div>
-          <!-- <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="600">
-            <div class="card tool-card h-100">
-              <div class="card-body">
-                <i class="bi bi-file-earmark-word tool-icon" style="color: #17a2b8;"></i>
-                <h4 class="card-title">PDF to Word</h4>
-                <p class="card-text">Convert your PDF documents to editable Word files instantly and accurately.</p>
-                <a href="pdf-to-word" class="btn btn-gradient stretched-link">Use Tool</a>
-              </div>
-            </div>
-          </div> -->
         </div>
-
-       <!--  <div class="text-center mt-5" data-aos="fade-up">
-          <a href="#" class="btn btn-outline-primary btn-lg">View All Tools</a>
-        </div> -->
       </div>
     </section>
     <section class="stats-section">
