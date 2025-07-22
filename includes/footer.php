@@ -23,7 +23,7 @@
         <h4>Useful Links</h4>
         <ul>
           <li><a href="../index.php">Home</a></li>
-          <li><a href="#">About us</a></li>
+          <li><a href="../about">About us</a></li>
           <li><a href="#">Services</a></li>
           <li><a href="#">Terms of service</a></li>
           <li><a href="#">Privacy policy</a></li>
@@ -33,11 +33,11 @@
       <div class="col-lg-2 col-md-3 footer-links">
         <h4>Our Tools</h4>
         <ul>
-          <li><a href="youtube-thumbnail-downloader">YouTube Thumbnail Downloader</a></li>
-          <li><a href="password-generator">Password Generator</a></li>
-          <li><a href="qr-generator">QR Code Generator</a></li>
-          <li><a href="word-counter">Word Counter</a></li>
-          <li><a href="image-to-text">Image Converter</a></li>
+          <li><a href="../youtube-thumbnail-downloader">YouTube Thumbnail Downloader</a></li>
+          <li><a href="../password-generator">Password Generator</a></li>
+          <li><a href="../qr-generator">QR Code Generator</a></li>
+          <li><a href="../word-counter">Word Counter</a></li>
+          <li><a href="../image-to-text">Image Converter</a></li>
         </ul>
       </div>
 
