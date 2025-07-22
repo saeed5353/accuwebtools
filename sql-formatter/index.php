@@ -23,7 +23,7 @@
   <link href="../assets/vendor/aos/aos.css" rel="stylesheet">
   <link href="../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
   <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-
+  <script src="https://unpkg.com/sql-formatter@2.3.3/dist/sql-formatter.min.js"></script>
   <!-- Main CSS File -->
   <link href="../assets/css/main.css" rel="stylesheet">
   <style>
@@ -146,16 +146,16 @@
                   </div>
                   <div class="col-md-6">
                     <label for="sql-output" class="form-label">Formatted SQL</label>
-                    <div class="formatted-output" id="sql-output">Your formatted SQL will appear here...</div>
+                    <div class="formatted-output" id="sql-output"><pre><code></code></pre></div>
                   </div>
                 </div>
                 
                 <!-- Action Buttons -->
                 <div class="row mt-3">
                   <div class="col-md-6">
-                    <button class="btn btn-primary w-100 py-2" id="format-btn">
+                    <!-- <button class="btn btn-primary w-100 py-2" id="format-btn">
                       <i class="bi bi-magic me-2"></i> Format SQL
-                    </button>
+                    </button> -->
                   </div>
                   <div class="col-md-6">
                     <button class="btn btn-success w-100 py-2 copy-btn" id="copy-output-btn">
@@ -167,10 +167,10 @@
                 <hr>
                 
                 <!-- Formatting Options -->
-                <h5 class="mb-3">Formatting Options</h5>
-                <div class="row g-3">
+                <!-- <h5 class="mb-3">Formatting Options</h5> -->
+                <!-- <div class="row g-3"> -->
                   <!-- Keyword Case -->
-                  <div class="col-md-4">
+                  <!-- <div class="col-md-4">
                     <div class="card option-card" data-option="keyword-case">
                       <div class="card-body text-center">
                         <i class="bi bi-type-h1 fs-3 mb-2"></i>
@@ -183,10 +183,10 @@
                         </select>
                       </div>
                     </div>
-                  </div>
+                  </div> -->
                   
                   <!-- Column Name Case -->
-                  <div class="col-md-4">
+                  <!-- <div class="col-md-4">
                     <div class="card option-card" data-option="identifier-case">
                       <div class="card-body text-center">
                         <i class="bi bi-text-paragraph fs-3 mb-2"></i>
@@ -199,10 +199,10 @@
                         </select>
                       </div>
                     </div>
-                  </div>
+                  </div> -->
                   
                   <!-- Indentation -->
-                  <div class="col-md-4">
+                  <!-- <div class="col-md-4">
                     <div class="card option-card" data-option="indentation">
                       <div class="card-body text-center">
                         <i class="bi bi-text-indent-left fs-3 mb-2"></i>
@@ -215,10 +215,10 @@
                         </select>
                       </div>
                     </div>
-                  </div>
+                  </div> -->
                   
                   <!-- Additional Options -->
-                  <div class="col-12 mt-3">
+                  <!-- <div class="col-12 mt-3">
                     <div class="row g-3">
                       <div class="col-md-3">
                         <div class="form-check form-switch">
@@ -245,8 +245,8 @@
                         </div>
                       </div>
                     </div>
-                  </div>
-                </div>
+                  </div> -->
+                <!-- </div> -->
               </div>
             </div>
             
@@ -333,228 +333,14 @@
 
   <!-- SQL Formatter Script -->
   <script>
-  document.addEventListener('DOMContentLoaded', function() {
-   function formatSQL(sql, options) {
-  const keywords = [
-    'SELECT', 'FROM', 'WHERE', 'JOIN', 'LEFT JOIN', 'RIGHT JOIN', 'INNER JOIN', 'OUTER JOIN',
-    'GROUP BY', 'HAVING', 'ORDER BY', 'LIMIT', 'AND', 'OR', 'NOT', 'AS',
-    'TRUE', 'FALSE', 'NULL', 'IS', 'IN', 'BETWEEN', 'LIKE', 'ON', 'UNION',
-    'INTERSECT', 'EXCEPT', 'VALUES', 'SET', 'DESC'
-  ];
+    var textarea = document.querySelector('textarea');
+    var code = document.querySelector('code');
 
-  const functions = [
-    'AVG', 'COUNT', 'FIRST', 'LAST', 'MAX', 'MIN', 'SUM', 'UCASE', 'LCASE', 'MID',
-    'LEN', 'ROUND', 'NOW', 'FORMAT', 'COALESCE', 'NVL', 'IFNULL', 'ISNULL'
-  ];
+    var format = window.sqlFormatter.format;
 
-  if (options.removeComments) {
-    sql = sql.replace(/--.*$/gm, '').replace(/\/\*[\s\S]*?\*\//g, '');
-  }
-
-  if (options.compactMode) {
-    return `<pre>${sql.replace(/\s+/g, ' ').trim()}</pre>`;
-  }
-
-  const indent = options.indentation === 'tab' ? '\t' :
-                options.indentation === 'none' ? '' :
-                ' '.repeat(parseInt(options.indentation));
-
-  // Normalize line breaks for major clauses
-  sql = sql.replace(/\b(SELECT|FROM|WHERE|GROUP BY|HAVING|ORDER BY|LIMIT|LEFT JOIN|RIGHT JOIN|INNER JOIN|OUTER JOIN|JOIN|AND|OR)\b/gi, '\n$1');
-
-  const lines = sql.split('\n').map(line => line.trim()).filter(Boolean);
-  const formattedLines = [];
-  let currentIndentLevel = 0;
-
-  for (let i = 0; i < lines.length; i++) {
-    let line = lines[i];
-    
-    // Handle SELECT clause with subqueries
-    if (/^SELECT\b/i.test(line)) {
-      const clauseRegex = /^SELECT\s*/i;
-      const expression = line.replace(clauseRegex, '');
-      
-      formattedLines.push(`<span class="sql-keyword">SELECT</span>`);
-      
-      // Split the SELECT list items, handling subqueries properly
-      const items = splitSelectItems(expression);
-      
-      items.forEach((item, idx) => {
-        item = item.trim();
-        if (item.endsWith(',')) item = item.slice(0, -1);
-        
-        // Format the item with proper indentation
-        let formattedItem = indent.repeat(currentIndentLevel + 1) + item;
-        
-        // If this is a subquery, we need to format it with increased indentation
-        if (isSubquery(item)) {
-          const subqueryLines = formatSubquery(item, indent, currentIndentLevel + 1);
-          formattedItem = subqueryLines;
-        }
-        
-        // Add comma if not the last item
-        if (idx < items.length - 1) {
-          if (typeof formattedItem === 'string') {
-            formattedItem += ',';
-          } else {
-            // For multi-line subqueries, add comma to the last line
-            formattedItem[formattedItem.length - 1] += ',';
-          }
-        }
-        
-        if (Array.isArray(formattedItem)) {
-          formattedLines.push(...formattedItem);
-        } else {
-          formattedLines.push(formattedItem);
-        }
-      });
-      continue;
-    }
-    
-    // Handle other clauses normally
-    formattedLines.push(indent.repeat(currentIndentLevel) + line);
-  }
-
-  let result = formattedLines.join('\n');
-
-  // Highlight keywords
-  keywords.forEach(kw => {
-    const regex = new RegExp(`\\b${kw}\\b`, 'gi');
-    result = result.replace(regex, match => {
-      let keyword = match;
-      if (options.keywordCase === 'upper') keyword = match.toUpperCase();
-      else if (options.keywordCase === 'lower') keyword = match.toLowerCase();
-      else if (options.keywordCase === 'capitalize') keyword = match.charAt(0).toUpperCase() + match.slice(1).toLowerCase();
-      return `<span class="sql-keyword">${keyword}</span>`;
+    textarea.addEventListener('input', function(event) {
+      code.innerText = format(event.target.value);
     });
-  });
-
-  // Highlight SQL functions
-  functions.forEach(fn => {
-    const regex = new RegExp(`\\b(${fn})\\s*\\(`, 'gi');
-    result = result.replace(regex, (match, fnName) => {
-      return `<span class="sql-function">${fnName}</span>(`;
-    });
-  });
-
-  return `<pre>${result}</pre>`;
-}
-
-// Helper: split SELECT items, handling subqueries properly
-function splitSelectItems(input) {
-  const items = [];
-  let buffer = '';
-  let parens = 0;
-  let inString = false;
-  let stringChar = null;
-
-  for (let i = 0; i < input.length; i++) {
-    const char = input[i];
-    
-    // Handle string literals
-    if ((char === "'" || char === '"') && !inString) {
-      inString = true;
-      stringChar = char;
-    } else if (char === stringChar && inString) {
-      inString = false;
-      stringChar = null;
-    }
-    
-    // Track parentheses (but not inside strings)
-    if (!inString) {
-      if (char === '(') parens++;
-      if (char === ')') parens--;
-    }
-    
-    // Split on commas only when not inside strings or parentheses
-    if (char === ',' && parens === 0 && !inString) {
-      items.push(buffer.trim());
-      buffer = '';
-    } else {
-      buffer += char;
-    }
-  }
-
-  if (buffer.trim() !== '') items.push(buffer.trim());
-  return items;
-}
-
-// Check if an item is a subquery
-function isSubquery(item) {
-  return /\(\s*SELECT\b/i.test(item);
-}
-
-// Format a subquery with proper indentation
-function formatSubquery(subquery, indentStr, indentLevel) {
-  // Extract the subquery content (remove surrounding parentheses)
-  const content = subquery.trim().slice(1, -1).trim();
-  
-  // Split into lines and format each line
-  const lines = content.split('\n').map(line => line.trim()).filter(Boolean);
-  const formattedLines = [];
-  
-  // Add opening parenthesis on its own line
-  formattedLines.push(indentStr.repeat(indentLevel) + '(');
-  
-  // Format each line of the subquery with increased indentation
-  for (let line of lines) {
-    formattedLines.push(indentStr.repeat(indentLevel + 1) + line);
-  }
-  
-  // Add closing parenthesis
-  formattedLines.push(indentStr.repeat(indentLevel) + ')');
-  
-  return formattedLines;
-}
-
-// Helper: split on commas not inside parentheses
-function splitByCommaOutsideParentheses(input) {
-  const parts = [];
-  let buffer = '';
-  let parens = 0;
-
-  for (let i = 0; i < input.length; i++) {
-    const char = input[i];
-
-    if (char === '(') parens++;
-    if (char === ')') parens--;
-
-    if (char === ',' && parens === 0) {
-      parts.push(buffer.trim());
-      buffer = '';
-    } else {
-      buffer += char;
-    }
-  }
-
-  if (buffer.trim() !== '') parts.push(buffer.trim());
-  return parts;
-}
-
-
-
-
-    document.getElementById('format-btn').addEventListener('click', function() {
-      const sqlInput = document.getElementById('sql-input').value;
-      if (!sqlInput.trim()) {
-        document.getElementById('sql-output').innerHTML = '<pre>Please enter SQL to format</pre>';
-        return;
-      }
-
-      const options = {
-        keywordCase: document.getElementById('keyword-case').value,
-        identifierCase: document.getElementById('identifier-case').value,
-        indentation: document.getElementById('indentation').value,
-        removeComments: document.getElementById('remove-comments').checked,
-        compactMode: document.getElementById('compact-mode').checked,
-        alignJoins: document.getElementById('align-joins').checked,
-        breakLongLines: document.getElementById('break-long-lines').checked
-      };
-
-      const formattedSQL = formatSQL(sqlInput, options);
-      document.getElementById('sql-output').innerHTML = formattedSQL;
-    });
-
     document.getElementById('copy-output-btn').addEventListener('click', function() {
       const output = document.getElementById('sql-output').innerText;
       if (!output.trim()) return;
@@ -569,21 +355,6 @@ function splitByCommaOutsideParentheses(input) {
         }, 2000);
       });
     });
-
-    const optionElements = [
-      'keyword-case', 'identifier-case', 'indentation',
-      'remove-comments', 'compact-mode', 'align-joins', 'break-long-lines'
-    ];
-
-    optionElements.forEach(id => {
-      document.getElementById(id).addEventListener('change', function() {
-        if (document.getElementById('sql-input').value.trim()) {
-          document.getElementById('format-btn').click();
-        }
-      });
-    });
-  });
-</script>
-
+  </script>
 </body>
 </html>
