@@ -42,13 +42,14 @@
     <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
       <a href="index.php" class="logo d-flex align-items-center">
         <!-- Uncomment the line below if you also wish to use an image logo -->
-        <img src="assets/img/logo.png" alt="">
+        <img src="assets/img/logo.png" alt="logo">
         <h1 class="sitename">AccuWebTools</h1>
       </a>
       <nav id="navmenu" class="navmenu">
         <ul>
           <li><a href="index.php">Home</a></li>
           <li><a href="about">About</a></li>
+          <li><a href="all-tools">Our Tools</a></li>
           <li><a href="contact">Contact</a></li>
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
@@ -432,7 +433,7 @@
           </div>
 
           <div class="col-lg-5 order-1 order-lg-2">
-            <img src="assets/img/faq.jpg" class="img-fluid" alt="" data-aos="zoom-in" data-aos-delay="100">
+            <img src="assets/img/faq.jpg" class="img-fluid" alt="FAQ IMAGE" data-aos="zoom-in" data-aos-delay="100">
           </div>
         </div>
 

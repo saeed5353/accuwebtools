@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>SQL Formatter - Beautify & Format SQL Queries Online</title>
+  <title>SQL Formatter - Free and Instant SQL Formatter</title>
   <meta name="description" content="Free online SQL formatter tool. Beautify and format your SQL queries with customizable options including keyword case, indentation, comment removal, and compact mode.">
   <meta name="keywords" content="sql formatter, sql query formatter, sql formatter online, sql beautifier, sql query formatter online, sql beautify, sql beautifier online, sql code formatter, sql formatter ssms, sql pretty, query formatter, instant sql formatter, redgate sql formatter, beautify sql query online, beautify sql code, code beautify sql, code formatter sql, format t sql, formatter sql server, mysql formatter, oracle sql formatter, poor man sql formatter, poor sql formatter, postgresql formatter, pretty print sql online, sql code beautifier online, sql command formatter, sql developer formatter, sql developer sql formatter">
 
