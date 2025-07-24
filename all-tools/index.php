@@ -53,7 +53,7 @@
           </div>
           <div class="row gy-3"> <!-- Changed gy-4 to gy-3 for tighter spacing -->
             <div class="col-lg-3 col-md-4 col-6" data-aos="fade-up" data-aos-delay="100">
-              <a href="youtube-thumbnail-downloader" class="card tool-card h-100 text-decoration-none"> <!-- Made entire card clickable -->
+              <a href="/youtube-thumbnail-downloader" class="card tool-card h-100 text-decoration-none"> <!-- Made entire card clickable -->
                 <div class="card-body p-3 text-center"> <!-- Reduced padding with p-3 -->
                   <i class="bi bi-youtube tool-icon" style="color: #FF0000; font-size: 2rem;"></i>
                   <h5 class="card-title mb-0">YouTube Thumbnail</h5>
@@ -62,7 +62,7 @@
             </div>
 
             <div class="col-lg-3 col-md-4 col-6" data-aos="fade-up" data-aos-delay="200">
-              <a href="password-generator" class="card tool-card h-100 text-decoration-none">
+              <a href="/password-generator" class="card tool-card h-100 text-decoration-none">
                 <div class="card-body p-3 text-center">
                   <i class="bi bi-key tool-icon" style="color: #5578ff; font-size: 2rem;"></i>
                   <h5 class="card-title mb-0">Password Generator</h5>
@@ -71,7 +71,7 @@
             </div>
 
             <div class="col-lg-3 col-md-4 col-6" data-aos="fade-up" data-aos-delay="300">
-              <a href="json-formatter" class="card tool-card h-100 text-decoration-none">
+              <a href="/json-formatter" class="card tool-card h-100 text-decoration-none">
                 <div class="card-body p-3 text-center">
                   <i class="bi bi-braces tool-icon" style="color: #FF5733; font-size: 2rem;"></i>
                   <h5 class="card-title mb-0">JSON Formatter</h5>
@@ -80,7 +80,7 @@
             </div>
             
             <div class="col-lg-3 col-md-4 col-6" data-aos="fade-up" data-aos-delay="300">
-              <a href="xml-formatter" class="card tool-card h-100 text-decoration-none">
+              <a href="/xml-formatter" class="card tool-card h-100 text-decoration-none">
                 <div class="card-body p-3 text-center">
                   <i class="bi bi-code-slash tool-icon" style="color: #6f42c1; font-size: 2rem;"></i>
                   <h5 class="card-title mb-0">XML Formatter</h5>
@@ -89,7 +89,7 @@
             </div>
 
             <div class="col-lg-3 col-md-4 col-6" data-aos="fade-up" data-aos-delay="400">
-              <a href="qr-generator" class="card tool-card h-100 text-decoration-none">
+              <a href="/qr-generator" class="card tool-card h-100 text-decoration-none">
                 <div class="card-body p-3 text-center">
                   <i class="bi bi-qr-code tool-icon" style="color: #4CAF50; font-size: 2rem;"></i>
                   <h5 class="card-title mb-0">QR Code Generator</h5>
@@ -98,7 +98,7 @@
             </div>
 
             <div class="col-lg-3 col-md-4 col-6" data-aos="fade-up" data-aos-delay="100">
-              <a href="word-counter" class="card tool-card h-100 text-decoration-none">
+              <a href="/word-counter" class="card tool-card h-100 text-decoration-none">
                 <div class="card-body p-3 text-center">
                   <i class="bi bi-fonts tool-icon" style="color: #28a745; font-size: 2rem;"></i>
                   <h5 class="card-title mb-0">Word Counter</h5>
@@ -107,7 +107,7 @@
             </div>
 
             <div class="col-lg-3 col-md-4 col-6" data-aos="fade-up" data-aos-delay="200">
-              <a href="sql-formatter" class="card tool-card h-100 text-decoration-none">
+              <a href="/sql-formatter" class="card tool-card h-100 text-decoration-none">
                 <div class="card-body p-3 text-center">
                   <i class="bi bi-terminal tool-icon" style="color: #4caf50; font-size: 2rem;"></i>
                   <h5 class="card-title mb-0">SQL Formatter</h5>
@@ -116,7 +116,7 @@
             </div>
 
             <div class="col-lg-3 col-md-4 col-6" data-aos="fade-up" data-aos-delay="300">
-              <a href="image-to-text" class="card tool-card h-100 text-decoration-none">
+              <a href="/image-to-text" class="card tool-card h-100 text-decoration-none">
                 <div class="card-body p-3 text-center">
                   <i class="bi bi-card-image tool-icon" style="color: #e361ff; font-size: 2rem;"></i>
                   <h5 class="card-title mb-0">Image to Text</h5>
@@ -125,7 +125,7 @@
             </div>
 
             <div class="col-lg-3 col-md-4 col-6" data-aos="fade-up" data-aos-delay="400">
-              <a href="age-calculator" class="card tool-card h-100 text-decoration-none">
+              <a href="/age-calculator" class="card tool-card h-100 text-decoration-none">
                 <div class="card-body p-3 text-center">
                   <i class="bi bi-hourglass-split tool-icon" style="color: #ff6f61; font-size: 2rem;"></i>
                   <h5 class="card-title mb-0">Age Calculator</h5>
@@ -134,7 +134,7 @@
             </div>
             
             <div class="col-lg-3 col-md-4 col-6" data-aos="fade-up" data-aos-delay="500">
-              <a href="merge-pdf" class="card tool-card h-100 text-decoration-none">
+              <a href="/merge-pdf" class="card tool-card h-100 text-decoration-none">
                 <div class="card-body p-3 text-center">
                   <i class="bi bi-files tool-icon" style="color: #007bff; font-size: 2rem;"></i>
                   <h5 class="card-title mb-0">Merge PDF</h5>
