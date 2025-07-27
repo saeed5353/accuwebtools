@@ -31,7 +31,7 @@
       </div>
 
       <div class="col-lg-2 col-md-3 footer-links">
-        <h4>Our Tools</h4>
+        <h4>Popular Tools</h4>
         <ul>
           <li><a href="../youtube-thumbnail-downloader">YouTube Thumbnail Downloader</a></li>
           <li><a href="../password-generator">Password Generator</a></li>
@@ -44,7 +44,7 @@
       <div class="col-lg-4 col-md-12 footer-newsletter">
         <h4>Our Newsletter</h4>
         <p>Subscribe to our newsletter and receive the latest news about our products and services!</p>
-        <form action="#" method="post" class="php-email-form">
+        <form action="newsletter.php" method="post" class="php-email-form">
           <div class="newsletter-form"><input type="email" name="email"><input type="submit" value="Subscribe"></div>
           <div class="loading">Loading</div>
           <div class="error-message"></div>
