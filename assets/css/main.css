@@ -676,18 +676,18 @@ h6 {
 }
 
 .page-title .heading {
-  padding: 160px 0 80px 0;
+  padding: 100px 0 40px 0;
   border-top: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
 }
 
 .page-title .heading h1 {
-  font-size: 38px;
-  font-weight: 700;
+  font-size: 30px;
+  font-weight: 500;
 }
 
 .page-title nav {
   background-color: color-mix(in srgb, var(--default-color), transparent 88%);
-  padding: 20px 0;
+  padding: 15px 0;
 }
 
 .page-title nav ol {
