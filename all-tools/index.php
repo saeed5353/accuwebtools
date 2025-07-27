@@ -9,7 +9,6 @@
 
     <!-- Favicons -->
     <link href="../assets/img/favicon.png" rel="icon" height="100px">
-    <!-- <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon"> -->
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com" rel="preconnect">
