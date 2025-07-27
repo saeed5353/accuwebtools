@@ -14,11 +14,10 @@ if ($conn->connect_error) {
   echo "Database connection failed: " . $conn->connect_error;
   exit();
 }
-exit();
 // Check if form was submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $email  = $conn->real_escape_string($_POST['email']);
-  echo $email;die;
+
   $sql = "INSERT INTO newsletter(email) VALUES ('$email')";
 
   if ($conn->query($sql) === TRUE) {
