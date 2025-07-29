@@ -1,4 +1,4 @@
-<?php include("/includes/track_visitors.php"); ?>
+<?php include("../includes/track_visitors.php"); ?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
