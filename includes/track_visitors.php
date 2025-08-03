@@ -1,7 +1,7 @@
 <?php
 // Database connection
-// $conn = new mysqli("localhost", "u915156841_tech", "cc%8cVr3NQ", "u915156841_accuwebtools");
-$conn = new mysqli("localhost", "root", "", "toolsdb");
+$conn = new mysqli("localhost", "u915156841_tech", "cc%8cVr3NQ", "u915156841_accuwebtools");
+// $conn = new mysqli("localhost", "root", "", "toolsdb");
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
@@ -20,7 +20,7 @@ if (preg_match('/mobile/i', $userAgent)) {
     $device = "Desktop";
 }
 
-$tenMinutesAgo  = date("Y-m-d H:i:s", strtotime("-1 minutes"));
+$tenMinutesAgo  = date("Y-m-d H:i:s", strtotime("-10 minutes"));
 
 // Check if IP + page visited in the last 1 hour
 $checkSql = "SELECT * FROM visitor_logs 
