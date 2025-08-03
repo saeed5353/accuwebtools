@@ -20,7 +20,7 @@ if (preg_match('/mobile/i', $userAgent)) {
     $device = "Desktop";
 }
 
-$tenMinutesAgo  = date("Y-m-d H:i:s", strtotime("-10 minutes"));
+$tenMinutesAgo  = date("Y-m-d H:i:s", strtotime("-1 minutes"));
 
 // Check if IP + page visited in the last 1 hour
 $checkSql = "SELECT * FROM visitor_logs 
