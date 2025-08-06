@@ -11,7 +11,7 @@
 
   <!-- Favicons -->
   <link href="../assets/img/favicon.png" rel="icon" height="100px">
-
+  <link rel="canonical" href="https://accuwebtools.com/about" />
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com" rel="preconnect">
   <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>

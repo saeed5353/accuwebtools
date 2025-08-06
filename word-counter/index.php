@@ -11,6 +11,7 @@
 
   <!-- Favicons -->
   <link href="../assets/img/favicon.png" rel="icon">
+  <link rel="canonical" href="https://accuwebtools.com/word-counter" />
 
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com" rel="preconnect">
