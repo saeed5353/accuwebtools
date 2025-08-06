@@ -36,6 +36,7 @@
 
     gtag('config', 'G-B9CT86JSTC');
   </script>
+  <script src="https://analytics.ahrefs.com/analytics.js" data-key="U0aAv+k6tj/t5S9GbIcmUg" async></script>
 </head>
 
 <body class="index-page">
