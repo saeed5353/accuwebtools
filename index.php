@@ -37,7 +37,7 @@
     gtag('config', 'G-B9CT86JSTC');
   </script>
   <script src="https://analytics.ahrefs.com/analytics.js" data-key="U0aAv+k6tj/t5S9GbIcmUg" async></script>
-  <script type='text/javascript' src='//pl27452491.profitableratecpm.com/34/56/0b/34560be75f4f63c61e3b45ffe63c064c.js'></script>
+  <!-- <script type='text/javascript' src='//pl27452491.profitableratecpm.com/34/56/0b/34560be75f4f63c61e3b45ffe63c064c.js'></script> -->
 </head>
 
 <body class="index-page">
