@@ -1,23 +1,36 @@
 <?php
-session_start();
-require_once 'User.php';
+	session_start();
+	require_once 'User.php';
 
-// Check if user is logged in
-if (!isset($_SESSION['user_id'])) {
-    header('Location: login.php');
-    exit();
-}
+	// Check if user is logged in
+	if (!isset($_SESSION['user_id'])) {
+	    header('Location: login.php');
+	    exit();
+	}
 
-$user = new User();
-$userData = $user->getUserById($_SESSION['user_id']);
-include("Data.php");
+	$user = new User();
+	$userData = $user->getUserById($_SESSION['user_id']);
+	include("Data.php");
 
-$data = new Data();
+	$data = new Data();
 
-// Call functions
-$totalVisitors = $data->getTotalVisitors();
-$todayVisitors = $data->getTodayVisitors();
-$TotalUniqueVisitors = $data->getTotalUniqueVisitors();
+	// Call functions
+	$totalVisitors = $data->getTotalVisitors();
+	$todayVisitors = $data->getTodayVisitors();
+	$TotalUniqueVisitors = $data->getTotalUniqueVisitors();
+	$getUniqueTodayVisitors = $data->getUniqueTodayVisitors();
+	$getMonthlyVisitors = $data->getMonthlyVisitors();
+
+	$months = [];
+	$totalVisitorsgraph = [];
+	$uniqueVisitors = [];
+
+	foreach ($getMonthlyVisitors as $row) {
+	    $months[] = $row['month'];  
+	    $totalVisitorsgraph[] = (int)$row['total_visitors'];
+	    $uniqueVisitors[] = (int)$row['unique_visitors'];
+	}
+	
 ?>
 
 <!DOCTYPE html>
@@ -30,6 +43,7 @@ $TotalUniqueVisitors = $data->getTotalUniqueVisitors();
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
 	<link rel="stylesheet" href="assets/css/ready.css">
 	<link rel="stylesheet" href="assets/css/demo.css">
+	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
 	<div class="wrapper">
@@ -179,7 +193,7 @@ $TotalUniqueVisitors = $data->getTotalUniqueVisitors();
 									</div>
 								</div>
 							</div>
-							<!-- <div class="col-md-3">
+							<div class="col-md-3">
 								<div class="card card-stats card-primary">
 									<div class="card-body ">
 										<div class="row">
@@ -190,14 +204,14 @@ $TotalUniqueVisitors = $data->getTotalUniqueVisitors();
 											</div>
 											<div class="col-7 d-flex align-items-center">
 												<div class="numbers">
-													<p class="card-category">Order</p>
-													<h4 class="card-title">576</h4>
+													<p class="card-category">Today's Unique Visitors</p>
+													<h4 class="card-title"><?php echo $getUniqueTodayVisitors; ?></h4>
 												</div>
 											</div>
 										</div>
 									</div>
 								</div>
-							</div> -->
+							</div>
 							<!-- <div class="col-md-3">
 								<div class="card card-stats">
 									<div class="card-body ">
@@ -276,9 +290,6 @@ $TotalUniqueVisitors = $data->getTotalUniqueVisitors();
 							</div> -->
 						</div>
 						<div class="row">
-							
-						</div>
-						<div class="row">
 							<div class="col-md-4">
 								<div class="card">
 									<div class="card-header">
@@ -294,12 +305,12 @@ $TotalUniqueVisitors = $data->getTotalUniqueVisitors();
 							<div class="col-md-8">
 								<div class="card">
 									<div class="card-header">
-										<h4 class="card-title">2018 Sales</h4>
+										<h4 class="card-title">Website Visitors Stats</h4>
 										<p class="card-category">
-										Number of products sold</p>
+										Monthwise Visitors Comparison</p>
 									</div>
 									<div class="card-body">
-										<div id="salesChart" class="chart"></div>
+										<canvas id="salesChart"></canvas>
 									</div>
 								</div>
 							</div>
@@ -325,3 +336,55 @@ $TotalUniqueVisitors = $data->getTotalUniqueVisitors();
 <script src="assets/js/ready.min.js"></script>
 <script src="assets/js/demo.js"></script>
 </html>
+<script>
+   var ctx = document.getElementById('salesChart').getContext('2d');
+
+    var salesChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: <?php echo json_encode($months); ?>,
+            datasets: [
+                {
+                    label: 'Total Visitors',
+                    data: <?php echo json_encode($totalVisitors); ?>,
+                    backgroundColor: 'rgba(54, 162, 235, 0.6)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 1
+                },
+                {
+                    label: 'Unique Visitors',
+                    data: <?php echo json_encode($uniqueVisitors); ?>,
+                    backgroundColor: 'rgba(255, 99, 132, 0.6)',
+                    borderColor: 'rgba(255, 99, 132, 1)',
+                    borderWidth: 1
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'top'
+                },
+                tooltip: {
+                    enabled: true
+                }
+            },
+            scales: {
+                x: {
+                    title: {
+                        display: true,
+                        text: 'Months'
+                    }
+                },
+                y: {
+                    beginAtZero: true,
+                    title: {
+                        display: true,
+                        text: 'Number of Visitors'
+                    }
+                }
+            }
+        }
+    });
+</script>
