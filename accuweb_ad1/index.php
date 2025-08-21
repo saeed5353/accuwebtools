@@ -10,7 +10,7 @@ if (!isset($_SESSION['user_id'])) {
 
 $user = new User();
 $userData = $user->getUserById($_SESSION['user_id']);
-include("data.php");
+include("Data.php");
 
 $data = new Data();
 
