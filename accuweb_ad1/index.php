@@ -30,7 +30,15 @@
 	    $totalVisitorsgraph[] = (int)$row['total_visitors'];
 	    $uniqueVisitors[] = (int)$row['unique_visitors'];
 	}
-	
+	$getCountryVisitors = $data->getCountryVisitorsThisMonth();
+
+	$countries = [];
+	$visitors = [];
+
+	foreach ($getCountryVisitors as $row) {
+	    $countries[] = $row['country'] ?: 'Unknown';
+	    $visitors[] = (int)$row['total_visitors'];
+	}
 ?>
 
 <!DOCTYPE html>
@@ -293,12 +301,12 @@
 							<div class="col-md-4">
 								<div class="card">
 									<div class="card-header">
-										<h4 class="card-title">Users Statistics</h4>
+										<h4 class="card-title">Geolocation Stats</h4>
 										<p class="card-category">
-										Users statistics this month</p>
+										Percentage of Countries Visited</p>
 									</div>
 									<div class="card-body">
-										<div id="monthlyChart" class="chart chart-pie"></div>
+										<canvas id="monthlyChart"></canvas>
 									</div>
 								</div>
 							</div>
@@ -382,6 +390,41 @@
                     title: {
                         display: true,
                         text: 'Number of Visitors'
+                    }
+                }
+            }
+        }
+    });
+    var ctxC = document.getElementById('monthlyChart').getContext('2d');
+
+    var monthlyChart = new Chart(ctxC, {
+        type: 'doughnut',
+        data: {
+            labels: <?php echo json_encode($countries); ?>,
+            datasets: [{
+                label: 'Visitors by Country',
+                data: <?php echo json_encode($visitors); ?>,
+                backgroundColor: [
+                    '#36A2EB', '#FF6384', '#FFCE56', '#4BC0C0', '#9966FF',
+                    '#FF9F40', '#66BB6A', '#D32F2F', '#1976D2', '#F57C00'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'right'
+                },
+                tooltip: {
+                    callbacks: {
+                        label: function(context) {
+                            let total = context.chart._metasets[0].total;
+                            let value = context.parsed;
+                            let percentage = ((value / total) * 100).toFixed(1);
+                            return context.label + ': ' + value + ' (' + percentage + '%)';
+                        }
                     }
                 }
             }

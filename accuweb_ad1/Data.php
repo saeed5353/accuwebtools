@@ -84,6 +84,30 @@ class Data {
 
         return $data;
     }
+    public function getCountryVisitorsThisMonth() {
+        $sql = "
+            SELECT country, COUNT(ip_address) AS total_visitors
+            FROM visitor_logs
+            WHERE MONTH(visit_time) = MONTH(CURDATE())
+              AND YEAR(visit_time) = YEAR(CURDATE())
+            GROUP BY country
+            ORDER BY total_visitors DESC
+        ";
+
+        $result = $this->conn->query($sql);
+        $data = [];
+
+        if ($result) {
+            while ($row = $result->fetch_assoc()) {
+                $data[] = [
+                    'country' => $row['country'],
+                    'total_visitors' => (int)$row['total_visitors']
+                ];
+            }
+        }
+
+        return $data;
+    }
 
     // Destructor closes DB connection when object is destroyed
     public function __destruct() {
