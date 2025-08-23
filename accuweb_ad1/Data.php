@@ -113,5 +113,45 @@ class Data {
     public function __destruct() {
         $this->conn->close();
     }
+    public function getPageVisitedStats() {
+        $sql = "
+            SELECT page_visited, COUNT(*) AS total_visits
+            FROM visitor_logs
+            GROUP BY page_visited
+            ORDER BY total_visits DESC
+        ";
+
+        $result = $this->conn->query($sql);
+        $data = [];
+        if ($result) {
+            while ($row = $result->fetch_assoc()) {
+                $data[] = [
+                    'page' => $row['page_visited'] ?: 'Unknown',
+                    'total_visits' => (int)$row['total_visits']
+                ];
+            }
+        }
+        return $data;
+    }
+    public function getDeviceStats() {
+        $sql = "
+            SELECT device_type, COUNT(*) AS total_visits
+            FROM visitor_logs
+            GROUP BY device_type
+            ORDER BY total_visits DESC
+        ";
+
+        $result = $this->conn->query($sql);
+        $data = [];
+        if ($result) {
+            while ($row = $result->fetch_assoc()) {
+                $data[] = [
+                    'device' => $row['device_type'] ?: 'Unknown',
+                    'total_visits' => (int)$row['total_visits']
+                ];
+            }
+        }
+        return $data;
+    }
 }
 ?>

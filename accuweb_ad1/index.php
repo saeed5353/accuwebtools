@@ -81,16 +81,9 @@
 					<ul class="navbar-nav topbar-nav ml-md-auto align-items-center">
 						
 						<li class="nav-item dropdown">
-							<a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#" aria-expanded="false"> <img src="assets/img/profile.jpg" alt="user-img" width="36" class="img-circle"><span >Hizrian</span></span> </a>
+							<a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#" aria-expanded="false"> <img src="assets/img/profile.jpg" alt="user-img" width="36" class="img-circle"><span >Admin</span></span> </a>
 							<ul class="dropdown-menu dropdown-user">
 								<li>
-									<div class="dropdown-divider"></div>
-									<a class="dropdown-item" href="#"><i class="ti-user"></i> My Profile</a>
-									<a class="dropdown-item" href="#"></i> My Balance</a>
-									<a class="dropdown-item" href="#"><i class="ti-email"></i> Inbox</a>
-									<div class="dropdown-divider"></div>
-									<a class="dropdown-item" href="#"><i class="ti-settings"></i> Account Setting</a>
-									<div class="dropdown-divider"></div>
 									<a class="dropdown-item" href="logout.php"><i class="fa fa-power-off"></i> Logout</a>
 								</ul>
 								<!-- /.dropdown-user -->
@@ -108,7 +101,7 @@
 						<div class="info">
 							<a class="" data-toggle="collapse" href="#collapseExample" aria-expanded="true">
 								<span>
-									Hizrian
+									Admin
 									<span class="user-level">Administrator</span>
 									<span class="caret"></span>
 								</span>

@@ -35,10 +35,34 @@
 			<p>Typography</p>
 		</a>
 	</li>
+	<li class="nav-item dropdown">
+		<a href="#blogSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+			<i class="la la-edit"></i>
+			<p>Blog</p>
+		</a>
+		<ul class="collapse list-unstyled" id="blogSubmenu">
+			<li>
+				<a href="add-post.php" class="dropdown-item">
+					<i class="la la-plus-circle"></i> Add Post
+				</a>
+			</li>
+			<li>
+				<a href="all-posts.php" class="dropdown-item">
+					<i class="la la-list"></i> All Posts
+				</a>
+			</li>
+		</ul>
+	</li>
 	<li class="nav-item">
-		<a href="icons.php">
+		<a href="userstats.php">
+			<i class="la la-users"></i>
+			<p>Users Stats</p>
+		</a>
+	</li>
+	<li class="nav-item">
+		<a href="messages.php">
 			<i class="la la-fonticons"></i>
-			<p>Icons</p>
+			<p>Messages</p>
 		</a>
 	</li>
 </ul>
