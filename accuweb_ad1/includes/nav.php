@@ -54,7 +54,7 @@
 		</ul>
 	</li>
 	<li class="nav-item">
-		<a href="userstats.php">
+		<a href="UserStats.php">
 			<i class="la la-users"></i>
 			<p>Users Stats</p>
 		</a>
