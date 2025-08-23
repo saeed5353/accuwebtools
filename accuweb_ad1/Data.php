@@ -34,7 +34,7 @@ class Data {
     // Function to count today's visitors
     public function getTodayVisitors() {
         $today = date("Y-m-d");
-        $sql = "SELECT COUNT(DISTINCT ip_address) AS today_visitors 
+        $sql = "SELECT COUNT(ip_address) AS today_visitors 
                 FROM visitor_logs 
                 WHERE DATE(visit_time) = '$today'";
         $result = $this->conn->query($sql);
@@ -47,7 +47,7 @@ class Data {
 
     public function getUniqueTodayVisitors() {
         $today = date("Y-m-d");
-        $sql = "SELECT COUNT(ip_address) AS todayUnique_visitors 
+        $sql = "SELECT COUNT(DISTINCT ip_address) AS todayUnique_visitors 
                 FROM visitor_logs 
                 WHERE DATE(visit_time) = '$today'";
         $result = $this->conn->query($sql);
