@@ -28,8 +28,8 @@
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
 	<link rel="stylesheet" href="assets/css/ready.css">
 	<link rel="stylesheet" href="assets/css/demo.css">
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 	<link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
-	<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 	<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
 </head>
 <body>
@@ -109,6 +109,7 @@
 						                            <th>Message</th>
 						                            <th>Date</th>
 						                            <th>Status</th>
+						                            <th>Status</th>
 						                        </tr>
 						                    </thead>
 						                    <tbody>
@@ -149,7 +150,7 @@
 		</div>
 	</div>
 </body>
-<script src="assets/js/core/jquery.3.2.1.min.js"></script>
+<!-- <script src="assets/js/core/jquery.3.2.1.min.js"></script> -->
 <script src="assets/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
 <script src="assets/js/core/popper.min.js"></script>
 <script src="assets/js/core/bootstrap.min.js"></script>
@@ -165,11 +166,9 @@
 <script src="assets/js/demo.js"></script>
 </html>
 <script>
-	$(document).ready(function() {
-	    $('#messagesTable').DataTable({
-	        pageLength: 10,
-	        order: [[ 0, "desc" ]]
-	    });
-	});
+    $('#messagesTable').DataTable({
+        pageLength: 10,
+        order: [[ 3, "ASC" ]]
+    });
 </script>
 
