@@ -148,7 +148,7 @@
 										Visitors Device Stats</p>
 									</div>
 									<div class="card-body">
-										<canvas id="deviceChart"></canvas>
+										<canvas id="deviceChart" width="400" height="400"></canvas>
 									</div>
 								</div>
 							</div>

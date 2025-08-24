@@ -291,7 +291,7 @@
 							</div> -->
 						</div>
 						<div class="row">
-							<div class="col-md-4">
+							<div class="col-md-5">
 								<div class="card">
 									<div class="card-header">
 										<h4 class="card-title">Geolocation Stats</h4>
@@ -303,7 +303,7 @@
 									</div>
 								</div>
 							</div>
-							<div class="col-md-8">
+							<div class="col-md-7">
 								<div class="card">
 									<div class="card-header">
 										<h4 class="card-title">Website Visitors Stats</h4>
