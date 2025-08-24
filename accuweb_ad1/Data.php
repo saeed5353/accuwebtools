@@ -3,8 +3,8 @@ class Data {
     private $conn;
 
     public function __construct() {
-        // $this->conn = new mysqli("localhost", "u915156841_tech", "cc%8cVr3NQ", "u915156841_accuwebtools");
-        $this->conn = new mysqli("localhost", "root", "", "toolsdb");
+        $this->conn = new mysqli("localhost", "u915156841_tech", "cc%8cVr3NQ", "u915156841_accuwebtools");
+        // $this->conn = new mysqli("localhost", "root", "", "toolsdb");
 
         if ($this->conn->connect_error) {
             die("Connection failed: " . $this->conn->connect_error);
