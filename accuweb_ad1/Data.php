@@ -154,5 +154,19 @@ class Data {
         }
         return $data;
     }
+    public function getAllMessages() {
+        $sql = "SELECT *
+                FROM messages 
+                ORDER BY submitted_at DESC";
+        $result = $this->conn->query($sql);
+        $data = [];
+
+        if ($result) {
+            while ($row = $result->fetch_assoc()) {
+                $data[] = $row;
+            }
+        }
+        return $data;
+    }
 }
 ?>
