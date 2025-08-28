@@ -1,4 +1,19 @@
-<?php include("includes/track_visitors.php"); ?>
+<?php 
+
+  include("includes/track_visitors.php"); 
+  
+
+  include("BlogPosts.php");
+  $blog = new Blog();
+
+  $limit = 6; // posts per page
+  $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+  $offset = ($page - 1) * $limit;
+
+  // Fetch posts and total count
+  $blogposts = $blog->getPosts($limit, $offset);
+ 
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -53,6 +68,7 @@
           <li><a href="index.php">Home</a></li>
           <li><a href="about">About</a></li>
           <li><a href="all-tools">All Tools</a></li>
+          <li><a href="blog">Our Blog</a></li>
           <li><a href="contact">Contact</a></li>
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
@@ -328,6 +344,55 @@
               <p>Free Forever</p>
             </div>
           </div>
+        </div>
+      </div>
+    </section>
+     <section class="blog-section py-5">
+      <div class="container">
+        <div class="section-title text-center" data-aos="fade-up">
+          <h2>Latest Blog Articles</h2>
+          <p class="lead">Tips, tutorials and recommended tools</p>
+        </div>
+
+        <div class="row">
+          <?php foreach ($blogposts as $post): ?>
+            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100" style="margin-top:5px;">
+              <div class="card blog-card h-100">
+                <a href="blog-detail/?id=<?php echo $post['id']; ?>" target="_blank" rel="nofollow">
+                  <img src="uploads/<?php echo $post['image']; ?>" class="card-img-top" alt="<?php echo htmlspecialchars($post['title']); ?>">
+                </a>
+                <div class="card-body">
+                  <div class="d-flex justify-content-between mb-2">
+                    <span class="badge bg-primary"></span>
+                    <small class="text-muted"><?php echo date("M d, Y", strtotime($post['created_at'])); ?></small>
+                  </div>
+                  <h5 class="card-title">
+                    <a href="blog-detail/?id=<?php echo $post['id']; ?>" target="_blank" rel="nofollow sponsored">
+                      <?php echo $post['title']; ?>
+                    </a>
+                  </h5>
+                  <p class="card-text">
+                    <?php 
+                      $desc = strip_tags($post['description']);
+                      if (strlen($desc) > 200) {
+                          echo substr($desc, 0, 200) . "...<br>";
+                          echo "<a href='blog-detail/?id=" . $post['id'] . "' target='_blank' rel='nofollow'>Read More</a>";
+                      } else {
+                          echo $desc;
+                      }
+                    ?>
+                  </p>
+                </div>
+               
+              </div>
+            </div>
+
+          <?php endforeach; ?>
+
+        </div>
+
+        <div class="text-center mt-4" data-aos="fade-up">
+          <a href="blog" class="btn btn-gradient">View All Articles</a>
         </div>
       </div>
     </section>

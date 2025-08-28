@@ -42,7 +42,7 @@
 		</a>
 		<ul class="collapse list-unstyled" id="blogSubmenu">
 			<li>
-				<a href="add-post.php" class="dropdown-item">
+				<a href="addPost.php" class="dropdown-item">
 					<i class="la la-plus-circle"></i> Add Post
 				</a>
 			</li>

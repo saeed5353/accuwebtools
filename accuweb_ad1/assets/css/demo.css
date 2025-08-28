@@ -104,3 +104,6 @@
 .from-show-notify label{
 	padding-top: 0.65rem;
 }
+.ck-editor__editable[role="textbox"] {
+    min-height: 300px !important; /* Bigger editor area */
+}
