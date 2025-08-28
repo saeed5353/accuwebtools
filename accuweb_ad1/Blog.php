@@ -10,11 +10,11 @@ class Blog {
     }
 
     // Create a new blog post
-    public function addPost($title, $slug, $description, $image, $status = 'draft') {
-        $sql = "INSERT INTO blog_posts (title, slug, description, image, status) 
-                VALUES (?, ?, ?, ?, ?)";
+    public function addPost($title, $slug, $description, $image, $status = 'draft',$category) {
+        $sql = "INSERT INTO blog_posts (title, slug, description, image, status,category) 
+                VALUES (?, ?, ?, ?, ?,?)";
         $stmt = $this->conn->prepare($sql);
-        return $stmt->execute([$title, $slug, $description, $image, $status]);
+        return $stmt->execute([$title, $slug, $description, $image, $status, $category]);
     }
 
     // Fetch all posts

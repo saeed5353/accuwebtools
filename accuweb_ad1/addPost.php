@@ -156,6 +156,10 @@
 				                  <option value="published">Published</option>
 				                </select>
 				              </div>
+				              <div class="form-group">
+				                <label>Category</label>
+				                <input type="text" name="category" class="form-control" required>
+				              </div>
 				              <button type="submit" class="btn btn-success">Add Post</button>
 				            </form>
 				          </div>
