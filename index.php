@@ -358,7 +358,7 @@
           <?php foreach ($blogposts as $post): ?>
             <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100" style="margin-top:5px;">
               <div class="card blog-card h-100">
-                <a href="blog-detail/?id=<?php echo $post['id']; ?>" target="_blank" rel="nofollow">
+                <a href="blog-detail/?id=<?php echo $post['id']; ?>" rel="nofollow">
                   <img src="uploads/<?php echo $post['image']; ?>" class="card-img-top" alt="<?php echo htmlspecialchars($post['title']); ?>">
                 </a>
                 <div class="card-body">
@@ -367,7 +367,7 @@
                     <small class="text-muted"><?php echo date("M d, Y", strtotime($post['created_at'])); ?></small>
                   </div>
                   <h5 class="card-title">
-                    <a href="blog-detail/?id=<?php echo $post['id']; ?>" target="_blank" rel="nofollow sponsored">
+                    <a href="blog-detail/?id=<?php echo $post['id']; ?>" rel="nofollow sponsored">
                       <?php echo $post['title']; ?>
                     </a>
                   </h5>
