@@ -1,4 +1,5 @@
 <?php 
+  include("../includes/track_visitors.php");
   include("../BlogPosts.php"); 
 
   $blog = new Blog();
@@ -61,7 +62,7 @@
 
                   <div class="card-body d-flex flex-column">
                     <h5 class="card-title">
-                      <a href="single.php?id=<?php echo urlencode($post['id']); ?>" class="text-dark text-decoration-none">
+                      <a href="../blog-detail?id=<?php echo urlencode($post['id']); ?>" class="text-dark text-decoration-none">
                         <?php echo htmlspecialchars($post['title']); ?>
                       </a>
                     </h5>
