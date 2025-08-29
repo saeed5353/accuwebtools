@@ -376,7 +376,7 @@
                       $desc = strip_tags($post['description']);
                       if (strlen($desc) > 200) {
                           echo substr($desc, 0, 200) . "...<br>";
-                          echo "<a href='blog-detail/?id=" . $post['id'] . "' target='_blank' rel='nofollow'>Read More</a>";
+                          echo "<a href='blog-detail/?id=" . $post['id'] . "' rel='nofollow'>Read More</a>";
                       } else {
                           echo $desc;
                       }
