@@ -1,16 +1,12 @@
 <?php 
-
   include("includes/track_visitors.php"); 
-  
-
   include("BlogPosts.php");
-  $blog = new Blog();
+  $blog = new Blog($db);
 
-  $limit = 6; // posts per page
+  $limit = 6;
   $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
   $offset = ($page - 1) * $limit;
 
-  // Fetch posts and total count
   $blogposts = $blog->getPosts($limit, $offset);
  
 ?>

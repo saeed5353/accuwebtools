@@ -1,7 +1,6 @@
 <?php 
 
   include("../includes/track_visitors.php"); 
-
   include("../BlogPosts.php");
   
   // Get the slug from the URL
@@ -13,7 +12,7 @@
     exit();
   }
   
-  $blog = new Blog();
+  $blog = new Blog($db);
   $post = $blog->getPostById($slug);
   
   if(!$post) {
@@ -74,38 +73,28 @@
       </section>
       <div class="container py-5">
         <div class="row justify-content-center">
-  <div class="col-lg-8">
-
-    <!-- Blog Image -->
-    <?php if (!empty($post['image'])): ?>
-      <div class="text-center mb-4">
-        <img src="../uploads/<?php echo htmlspecialchars($post['image']); ?>" 
-             class="img-fluid rounded shadow-sm" 
-             alt="<?php echo htmlspecialchars($post['title']); ?>">
-      </div>
-    <?php endif; ?>
-
-    <!-- Blog Title -->
-    <h1 class="text-center mb-3"><?php echo htmlspecialchars($post['title']); ?></h1>
-
-    <!-- Blog Meta Info (Date + Category) -->
-    <p class="text-center text-muted">
-      <?php echo date("F j, Y", strtotime($post['created_at'])); ?>
-      <?php if (!empty($post['category'])): ?>
-        | <span class="badge bg-primary"><?php echo htmlspecialchars($post['category']); ?></span>
-      <?php endif; ?>
-    </p>
-
-    <!-- Blog Description / Content -->
-    <div class="mt-4">
-      <p class="lead text-center">
-        <?php echo nl2br($post['description']); ?>
-      </p>
-    </div>
-
-  </div>
-</div>
-
+          <div class="col-lg-8">
+            <?php if (!empty($post['image'])): ?>
+              <div class="text-center mb-4">
+                <img src="../uploads/<?php echo htmlspecialchars($post['image']); ?>" 
+                     class="img-fluid rounded shadow-sm" 
+                     alt="<?php echo htmlspecialchars($post['title']); ?>">
+              </div>
+            <?php endif; ?>
+            <h1 class="text-center mb-3"><?php echo htmlspecialchars($post['title']); ?></h1>
+            <p class="text-center text-muted">
+              <?php echo date("F j, Y", strtotime($post['created_at'])); ?>
+              <?php if (!empty($post['category'])): ?>
+                | <span class="badge bg-primary"><?php echo htmlspecialchars($post['category']); ?></span>
+              <?php endif; ?>
+            </p>
+            <div class="mt-4">
+              <p class="lead text-center">
+                <?php echo nl2br($post['description']); ?>
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
     </main>
 

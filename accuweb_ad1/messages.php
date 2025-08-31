@@ -7,12 +7,10 @@
 	    header('Location: login.php');
 	    exit();
 	}
-
-	$user = new User();
+	$user = new User($db);
 	$userData = $user->getUserById($_SESSION['user_id']);
 	include("Data.php");
-
-	$data = new Data();
+	$data = new Data($db);
 
 	$getMessages = $data->getAllMessages();
 	

@@ -1,12 +1,6 @@
 <?php
-// Database connection config
-$host = "localhost";
-$user = "u915156841_tech";       
-$password = "cc%8cVr3NQ";       
-$database = "u915156841_accuwebtools";
-
-// Connect to MySQL
-$conn = new mysqli($host, $user, $password, $database);
+include_once "../db.php";
+$conn = $db;
 
 // Check connection
 if ($conn->connect_error) {
