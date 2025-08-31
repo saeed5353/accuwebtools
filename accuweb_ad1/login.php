@@ -9,7 +9,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $password = trim($_POST['password']);
     
     if (!empty($email) && !empty($password)) {
-        $user = new User();
+        $user = new User($db);
         $userData = $user->login($email, $password);
         
         if ($userData) {
