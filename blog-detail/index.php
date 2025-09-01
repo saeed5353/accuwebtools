@@ -28,9 +28,9 @@
   <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <title>AccuWebTools - Accurate & Free Online Tools for Everyday Tasks</title>
-    <meta name="description" content="AccuWebTools offers free, accurate, and easy-to-use online tools including PDF mergers, image-to-text converters, YouTube thumbnail downloaders, age calculators, and more.">
-    <meta name="keywords" content="accuwebtools,accuweb tools, accu web tools,free online tools, pdf merger, image to text, youtube thumbnail downloader, age calculator, word counter, text tools, convert pdf, extract text from image, web utilities">
+    <title><?php echo htmlspecialchars($post['title']); ?></title>
+    <meta name="description" content="<?php echo htmlspecialchars($post['meta_description']); ?>">
+    <meta name="keywords" content="<?php echo htmlspecialchars($post['meta_keywords']); ?>">
 
     <!-- Favicons -->
     <link href="../assets/img/favicon.png" rel="icon" height="100px">

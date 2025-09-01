@@ -8,6 +8,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $title = $_POST['title'];
     $slug = $_POST['slug'];
     $description = $_POST['description'];
+    $meta_description = $_POST['meta_description'];
+    $meta_keywords = $_POST['meta_keywords'];
     $status = $_POST['status'];
     $category = $_POST['category'];
 
@@ -22,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $image = $targetDir . basename($_FILES['image']['name']);
         move_uploaded_file($_FILES['image']['tmp_name'], $image);
     }
-    if ($blog->addPost($title, $slug, $description, basename($_FILES['image']['name']), $status, $category)) {
+    if ($blog->addPost($title, $slug, $description, basename($_FILES['image']['name']), $status, $category,$meta_keywords,$meta_description)) {
         header("Location: blog.php?success=1");
         exit;
     } else {

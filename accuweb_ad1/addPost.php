@@ -43,7 +43,7 @@
 	<link rel="stylesheet" href="assets/css/ready.css">
 	<link rel="stylesheet" href="assets/css/demo.css">
 	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-	<script src="https://cdn.ckeditor.com/ckeditor5/41.4.2/classic/ckeditor.js"></script>
+	<script src="https://cdn.tiny.cloud/1/ptluggoy0cn47p8p06ypeh0ce8moywd8xut6d11hnffs2w8i/tinymce/8/tinymce.min.js" referrerpolicy="origin" crossorigin="anonymous"></script>
 </head>
 <body>
 	<div class="wrapper">
@@ -133,35 +133,51 @@
 				        <div class="card">
 				          <div class="card-body">
 				            <form method="POST" enctype="multipart/form-data" action="save_post.php" id="postForm">
-				              <div class="form-group">
-				                <label>Post Title</label>
-				                <input type="text" name="title" class="form-control" required>
-				              </div>
-				              <div class="form-group">
-				                <label>Slug (Unique)</label>
-				                <input type="text" name="slug" class="form-control" required>
-				              </div>
-				              <div class="form-group">
-				                <label>Description</label>
-				                <textarea name="description" id="description" class="form-control" required></textarea>
-				              </div>
-				              <div class="form-group">
-				                <label>Post Image</label>
-				                <input type="file" name="image" class="form-control">
-				              </div>
-				              <div class="form-group">
-				                <label>Status</label>
-				                <select name="status" class="form-control">
-				                  <option value="draft">Draft</option>
-				                  <option value="published">Published</option>
-				                </select>
-				              </div>
-				              <div class="form-group">
-				                <label>Category</label>
-				                <input type="text" name="category" class="form-control" required>
-				              </div>
-				              <button type="submit" class="btn btn-success">Add Post</button>
-				            </form>
+							  <div class="form-group">
+							    <label>Post Title</label>
+							    <input type="text" name="title" class="form-control" required>
+							  </div>
+
+							  <div class="form-group">
+							    <label>Slug (Unique)</label>
+							    <input type="text" name="slug" class="form-control" required>
+							  </div>
+
+							  <div class="form-group">
+							    <label>Description</label>
+							    <textarea name="description" id="description" class="form-control"></textarea>
+							  </div>
+
+							  <div class="form-group">
+							    <label>Meta Description</label>
+							    <textarea name="meta_description" class="form-control"></textarea>
+							  </div>
+
+							  <div class="form-group">
+							    <label>Meta Keywords</label>
+							    <input type="text" name="meta_keywords" class="form-control" placeholder="keyword1, keyword2, keyword3">
+							  </div>
+
+							  <div class="form-group">
+							    <label>Post Image</label>
+							    <input type="file" name="image" class="form-control">
+							  </div>
+
+							  <div class="form-group">
+							    <label>Status</label>
+							    <select name="status" class="form-control">
+							      <option value="draft">Draft</option>
+							      <option value="published">Published</option>
+							    </select>
+							  </div>
+
+							  <div class="form-group">
+							    <label>Category</label>
+							    <input type="text" name="category" class="form-control" required>
+							  </div>
+
+							  <button type="submit" class="btn btn-success">Add Post</button>
+							</form>
 				          </div>
 				        </div>
 				      </div>
@@ -188,52 +204,23 @@
 <script src="assets/js/demo.js"></script>
 </html>
 <script>
-	// Format text based on command
-        function formatText(command, value = null) {
-            document.getElementById('description').focus();
-            
-            if (command === 'createLink') {
-                let url = prompt('Enter the URL:');
-                if (url) {
-                    document.execCommand(command, false, url);
-                }
-            } else {
-                document.execCommand(command, false, value);
-            }
-            
-            updateCharCount();
-        }
-        
-        // Apply color to text
-        function applyColor(color) {
-            document.execCommand('foreColor', false, color);
-            updateCharCount();
-        }
-        
-        // Update character count
-        function updateCharCount() {
-            const text = document.getElementById('description').innerText;
-            document.getElementById('charCount').textContent = text.length;
-        }
-        
-        // Add input event listener to update character count
-        document.getElementById('description').addEventListener('input', updateCharCount);
-        
-        // Form submission
-        document.getElementById('richTextForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Get the HTML content from the rich text editor
-            const descriptionContent = document.getElementById('description').innerHTML;
-            
-            // In a real application, you would send this content to the server
-            alert('Form submitted successfully!\n\nDescription content:\n' + 
-                  document.getElementById('description').innerText);
-            
-            // Here you can submit the form via AJAX or let it submit normally
-            // For demonstration, we're just showing an alert
-        });
-        
-        // Initialize character count on page load
-        document.addEventListener('DOMContentLoaded', updateCharCount);
+	tinymce.init({
+    selector: '#description',
+    plugins: [
+      // Core editing features
+      'anchor', 'autolink', 'charmap', 'codesample', 'emoticons', 'link', 'lists', 'media', 'searchreplace', 'table', 'visualblocks', 'wordcount',
+      // Your account includes a free trial of TinyMCE premium features
+      // Try the most popular premium features until Sep 15, 2025:
+      'checklist', 'mediaembed', 'casechange', 'formatpainter', 'pageembed', 'a11ychecker', 'tinymcespellchecker', 'permanentpen', 'powerpaste', 'advtable', 'advcode', 'advtemplate', 'ai', 'uploadcare', 'mentions', 'tinycomments', 'tableofcontents', 'footnotes', 'mergetags', 'autocorrect', 'typography', 'inlinecss', 'markdown','importword', 'exportword', 'exportpdf'
+    ],
+    toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link media table mergetags | addcomment showcomments | spellcheckdialog a11ycheck typography uploadcare | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat',
+    tinycomments_mode: 'embedded',
+    tinycomments_author: 'Author name',
+    mergetags_list: [
+      { value: 'First.Name', title: 'First Name' },
+      { value: 'Email', title: 'Email' },
+    ],
+    ai_request: (request, respondWith) => respondWith.string(() => Promise.reject('See docs to implement AI Assistant')),
+    uploadcare_public_key: 'af8f2f381cf208f02e0e',
+  });
 </script>

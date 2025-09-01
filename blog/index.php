@@ -2,7 +2,7 @@
   include("../includes/track_visitors.php");
   include("../BlogPosts.php"); 
 
-  $blog = new Blog();
+  $blog = new Blog($db);
 
   // Pagination setup
   $limit = 6; // posts per page

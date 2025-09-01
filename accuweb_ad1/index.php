@@ -30,7 +30,7 @@
 	    $totalVisitorsgraph[] = (int)$row['total_visitors'];
 	    $uniqueVisitors[] = (int)$row['unique_visitors'];
 	}
-	$getCountryVisitors = $data->getCountryVisitorsThisMonth();
+	$getCountryVisitors = $data->getCountryVisitors();
 
 	$countries = [];
 	$visitors = [];
