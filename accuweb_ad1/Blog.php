@@ -19,9 +19,18 @@ class Blog {
 
     // Fetch all posts
     public function getPosts() {
-        $sql = "SELECT * FROM blog_posts ORDER BY created_at DESC";
-        $stmt = $this->conn->query($sql);
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $sql = "SELECT *
+                FROM blog_posts 
+                ORDER BY created_at DESC";
+        $result = $this->conn->query($sql);
+        $data = [];
+
+        if ($result) {
+            while ($row = $result->fetch_assoc()) {
+                $data[] = $row;
+            }
+        }
+        return $data;
     }
 
     // Get single post by ID

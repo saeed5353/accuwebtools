@@ -25,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         move_uploaded_file($_FILES['image']['tmp_name'], $image);
     }
     if ($blog->addPost($title, $slug, $description, basename($_FILES['image']['name']), $status, $category,$meta_keywords,$meta_description)) {
-        header("Location: blog.php?success=1");
+        header("Location: posts.php?success=1");
         exit;
     } else {
         echo "Error saving post.";

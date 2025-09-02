@@ -47,7 +47,7 @@
 				</a>
 			</li>
 			<li>
-				<a href="all-posts.php" class="dropdown-item">
+				<a href="posts.php" class="dropdown-item">
 					<i class="la la-list"></i> All Posts
 				</a>
 			</li>
