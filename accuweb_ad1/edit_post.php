@@ -1,6 +1,7 @@
 <?php
 	session_start();
 	require_once 'User.php';
+	include_once "Blog.php";
 
 	// Check if user is logged in
 	if (!isset($_SESSION['user_id'])) {
@@ -8,28 +9,9 @@
 	    exit();
 	}
 
-	$user = new User($db);
-	$userData = $user->getUserById($_SESSION['user_id']);
-	include("Data.php");
+	$blog = new Blog($db);
 
-	$data = new Data($db);
-
-	$getPageStats = $data->getPageVisitedStats();
-	$pages = [];
-	$pageVisits = [];
-	foreach ($getPageStats as $row) {
-	    $pages[] = $row['page'];
-	    $pageVisits[] = $row['total_visits'];
-	}
-
-	// Devices data
-	$getDeviceStats = $data->getDeviceStats();
-	$devices = [];
-	$deviceVisits = [];
-	foreach ($getDeviceStats as $row) {
-	    $devices[] = $row['device'];
-	    $deviceVisits[] = $row['total_visits'];
-	}
+	$post = null;
 	$isEdit = false;
 
 	if (isset($_GET['id'])) {
@@ -118,8 +100,8 @@
 				      <div class="col-md-8">
 				        <div class="card">
 				          <div class="card-body">
-				            <?php include("PostForm.php"); ?>
-				          </div>
+								    <?php include("PostForm.php"); ?>
+								</div>
 				        </div>
 				      </div>
 				    </div>

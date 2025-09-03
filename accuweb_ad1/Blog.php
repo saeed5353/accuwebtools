@@ -32,22 +32,28 @@ class Blog {
         }
         return $data;
     }
-
-    // Get single post by ID
     public function getPostById($id) {
-        $sql = "SELECT * FROM blog_posts WHERE id = ?";
-        $stmt = $this->conn->prepare($sql);
-        $stmt->execute([$id]);
-        return $stmt->fetch(PDO::FETCH_ASSOC);
+        $id = (int)$id; // Prevent SQL injection
+        $sql = "SELECT * FROM blog_posts WHERE id = $id";
+        $result = $this->conn->query($sql);
+
+        if ($result && $result->num_rows > 0) {
+            return $result->fetch_assoc();
+        }
+        return null;
     }
 
     // Update post
-    public function updatePost($id, $title, $slug, $description, $image, $status) {
-        $sql = "UPDATE blog_posts 
-                SET title=?, slug=?, description=?, image=?, status=?, updated_at=NOW() 
-                WHERE id=?";
-        $stmt = $this->conn->prepare($sql);
-        return $stmt->execute([$title, $slug, $description, $image, $status, $id]);
+    public function updatePost($id, $title, $slug, $description, $image, $status, $category, $meta_keywords, $meta_description) {
+        if ($image) {
+            $sql = "UPDATE blog_posts SET title=?, slug=?, description=?, image=?, status=?, category=?, meta_keywords=?, meta_description=? WHERE id=?";
+            $stmt = $this->conn->prepare($sql);
+            return $stmt->execute([$title, $slug, $description, $image, $status, $category, $meta_keywords, $meta_description, $id]);
+        } else {
+            $sql = "UPDATE blog_posts SET title=?, slug=?, description=?, status=?, category=?, meta_keywords=?, meta_description=? WHERE id=?";
+            $stmt = $this->conn->prepare($sql);
+            return $stmt->execute([$title, $slug, $description, $status, $category, $meta_keywords, $meta_description, $id]);
+        }
     }
 
     // Delete post

@@ -5,6 +5,7 @@ include_once "Blog.php";
 $blog = new Blog($db);
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $id = $_POST['id'] ?? null;
     $title = $_POST['title'];
     $slug = $_POST['slug'];
     $description = $_POST['description'];
@@ -14,20 +15,32 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $category = $_POST['category'];
 
     // Handle image upload
-    $ext = pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
-    $image = null;
+    $imageName = null;
     if (!empty($_FILES['image']['name'])) {
         $targetDir = "../uploads/";
         if (!is_dir($targetDir)) {
             mkdir($targetDir, 0777, true);
         }
-        $image = $targetDir . basename($_FILES['image']['name']);
-        move_uploaded_file($_FILES['image']['tmp_name'], $image);
+        $imageName = time() . "_" . basename($_FILES['image']['name']);
+        $targetFile = $targetDir . $imageName;
+        move_uploaded_file($_FILES['image']['tmp_name'], $targetFile);
     }
-    if ($blog->addPost($title, $slug, $description, basename($_FILES['image']['name']), $status, $category,$meta_keywords,$meta_description)) {
-        header("Location: posts.php?success=1");
-        exit;
+
+    if ($id) {
+        // Update existing post
+        if ($blog->updatePost($id, $title, $slug, $description, $imageName, $status, $category, $meta_keywords, $meta_description)) {
+            header("Location: posts.php?updated=1");
+            exit;
+        } else {
+            echo "Error updating post.";
+        }
     } else {
-        echo "Error saving post.";
+        // Insert new post
+        if ($blog->addPost($title, $slug, $description, $imageName, $status, $category, $meta_keywords, $meta_description)) {
+            header("Location: posts.php?success=1");
+            exit;
+        } else {
+            echo "Error saving post.";
+        }
     }
 }
