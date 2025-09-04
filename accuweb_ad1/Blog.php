@@ -56,10 +56,27 @@ class Blog {
         }
     }
 
-    // Delete post
     public function deletePost($id) {
+        // First get the image name
+        $sql = "SELECT image FROM blog_posts WHERE id = ?";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bind_param("i", $id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $post = $result->fetch_assoc();
+
+        if ($post && !empty($post['image'])) {
+            $file = "../uploads/" . $post['image'];
+            if (file_exists($file)) {
+                unlink($file);
+            }
+        }
+
+        // Now delete post from DB
         $sql = "DELETE FROM blog_posts WHERE id = ?";
         $stmt = $this->conn->prepare($sql);
-        return $stmt->execute([$id]);
+        $stmt->bind_param("i", $id);
+        return $stmt->execute();
     }
+
 }
