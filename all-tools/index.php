@@ -141,6 +141,14 @@
                 </div>
               </a>
             </div>
+            <div class="col-lg-3 col-md-4 col-6" data-aos="fade-up" data-aos-delay="600">
+              <a href="/html-formatter" class="card tool-card h-100 text-decoration-none">
+                <div class="card-body p-3 text-center">
+                  <i class="bi bi-code-slash tool-icon" style="color: #28a745; font-size: 2rem;"></i>
+                  <h5 class="card-title mb-0">HTML Formatter</h5>
+                </div>
+              </a>
+            </div>
           </div>
         </div>
       </section>
