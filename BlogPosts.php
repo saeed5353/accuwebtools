@@ -35,5 +35,49 @@ class Blog {
       $row = $result->fetch_assoc();
       return $row['total'];
     }
+     // Fetch categories with post counts
+    public function getCategoriesWithCounts() {
+        $sql = "SELECT category, COUNT(*) as count 
+                FROM blog_posts 
+                GROUP BY category 
+                ORDER BY category ASC";
+        $result = $this->conn->query($sql);
+
+        $categories = [];
+        if ($result && $result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                $categories[] = $row;
+            }
+        }
+        return $categories;
+    }
+
+    // Get posts by category
+    public function getPostsByCategory($category, $limit, $offset) {
+        $stmt = $this->conn->prepare("SELECT * FROM blog_posts WHERE category = ? ORDER BY created_at DESC LIMIT ?, ?");
+        $stmt->bind_param("sii", $category, $offset, $limit);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        $posts = [];
+        if ($result && $result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                $posts[] = $row;
+            }
+        }
+        return $posts;
+    }
+
+    // Count posts by category
+    public function getTotalPostsByCategory($category) {
+        $stmt = $this->conn->prepare("SELECT COUNT(*) as total FROM blog_posts WHERE category = ?");
+        $stmt->bind_param("s", $category);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $row = $result->fetch_assoc();
+        return $row['total'] ?? 0;
+    }
+
+
 }
 ?>
