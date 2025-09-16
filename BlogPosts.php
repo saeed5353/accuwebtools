@@ -14,14 +14,15 @@ class Blog {
         $stmt->bind_param("i", $id);
         $stmt->execute();
         $result = $stmt->get_result();
-        return $result->fetch_assoc(); // fetch 1 row as associative array
+        return $result->fetch_assoc();
     }
 
     public function getPostBySlug($slug) {
-        $sql = "SELECT * FROM blog_posts WHERE slug = ?";
-        $stmt = $this->conn->prepare($sql);
-        $stmt->execute([$slug]);
-        return $stmt->fetch(PDO::FETCH_ASSOC);
+        $stmt = $this->db->prepare("SELECT * FROM blog_posts WHERE slug = ? LIMIT 1");
+        $stmt->bind_param("s", $slug);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_assoc();
     }
     public function getPosts($limit, $offset) {
       $stmt = $this->conn->prepare("SELECT * FROM blog_posts ORDER BY created_at DESC LIMIT ? OFFSET ?");

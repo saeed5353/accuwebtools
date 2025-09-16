@@ -1,0 +1,8 @@
+RewriteEngine On
+
+# Redirect old ?id= URLs to new slug URLs
+RewriteCond %{THE_REQUEST} \s/index\.php\?id=([^\s&]+) [NC]
+RewriteRule ^ index.php?slug=%1 [R=301,L]
+
+# Rewrite /blog-detail/slug → /blog-detail/index.php?slug=slug
+RewriteRule ^([^/]+)/?$ index.php?slug=$1 [L,QSA]

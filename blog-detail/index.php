@@ -4,7 +4,7 @@
   include("../BlogPosts.php");
   
   // Get the slug from the URL
-  $slug = isset($_GET['id']) ? $_GET['id'] : '';
+  $slug = isset($_GET['slug']) ? $_GET['slug'] : '';
   
   if(empty($slug)) {
     // Redirect to homepage if no slug provided
