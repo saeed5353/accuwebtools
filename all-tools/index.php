@@ -149,6 +149,14 @@
                 </div>
               </a>
             </div>
+            <div class="col-lg-3 col-md-4 col-6" data-aos="fade-up" data-aos-delay="700">
+              <a href="/qr-scanner" class="card tool-card h-100 text-decoration-none">
+                <div class="card-body p-3 text-center">
+                  <i class="bi bi-upc-scan tool-icon" style="color: #ff5722; font-size: 2rem;"></i>
+                  <h5 class="card-title mb-0">QR / Barcode Scanner</h5>
+                </div>
+              </a>
+            </div>
           </div>
         </div>
       </section>
