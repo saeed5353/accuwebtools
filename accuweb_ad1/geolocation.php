@@ -98,7 +98,7 @@
 						                <h4 class="card-title">Number of Countries Users Visited</h4>
 						            </div>
 						            <div class="card-body">
-						                <table id="messagesTable" class="table table-bordered table-striped">
+						                <table id="locationTable" class="table table-bordered table-striped">
 						                    <thead>
 						                        <tr>
 						                            <th>Country Name</th>
@@ -140,9 +140,9 @@
 <script src="assets/js/demo.js"></script>
 </html>
 <script>
-    $('#messagesTable').DataTable({
+    $('#locationTable').DataTable({
         pageLength: 10,
-        order: [[ 3, "ASC" ]]
+        order: [[ 1, "ASC" ]]
     });
 </script>
 
