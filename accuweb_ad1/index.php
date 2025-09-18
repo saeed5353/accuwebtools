@@ -294,7 +294,9 @@
 							<div class="col-md-5">
 								<div class="card">
 									<div class="card-header">
-										<h4 class="card-title">Geolocation Stats</h4>
+										<h4 class="card-title">Geolocation Stats<a style="float: right;" href="geolocation.php" class="text-primary d-flex align-items-center">
+							                View Details <i class="bi bi-arrow-right ms-1"></i>
+							            </a></h4>
 										<p class="card-category">
 										Percentage of Countries Visited</p>
 									</div>
