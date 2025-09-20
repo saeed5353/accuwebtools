@@ -104,6 +104,30 @@
           margin-bottom: 20px;
         }
       }
+      #toast {
+        visibility: hidden;
+        min-width: 200px;
+        background: #4CAF50;
+        color: #fff;
+        text-align: center;
+        border-radius: 6px;
+        padding: 12px 18px;
+        position: fixed;
+        top: 100px;
+        right: 20px;
+        z-index: 1000;
+        font-size: 14px;
+        opacity: 0;
+        transition: opacity 0.5s, visibility 0.5s;
+      }
+      #toast.show {
+        visibility: visible;
+        opacity: 1;
+      }
+      #toast .icon {
+        color: white;
+        font-size: 18px;
+      }
     </style>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-B9CT86JSTC"></script>
@@ -341,9 +365,8 @@
     <!-- Scroll Top -->
     <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
-    <!-- Preloader -->
-    <div id="preloader"></div>
-
+    <div id="toast">XML copied to clipboard!</div>
+    
     <!-- Vendor JS Files -->
     <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="../assets/vendor/php-email-form/validate.js"></script>
@@ -545,11 +568,9 @@
         document.getElementById('error-message').style.display = 'none';
       });
 
-      // Copy to clipboard
       document.getElementById('copy-btn').addEventListener('click', function() {
         const output = document.getElementById('xml-output').textContent;
         navigator.clipboard.writeText(output).then(() => {
-          alert('XML copied to clipboard!');
         });
       });
 
@@ -594,6 +615,22 @@
         }
         updateLineNumbers(formatted);
       }
+       document.getElementById('copy-btn').addEventListener('click', function() {
+          const output = document.getElementById('xml-output').textContent;
+          navigator.clipboard.writeText(output).then(() => {
+            showToast("XML copied to clipboard!");
+          });
+        });
+
+        function showToast(message) {
+          const toast = document.getElementById("toast");
+          toast.textContent = message;
+          toast.classList.add("show");
+
+          setTimeout(() => {
+            toast.classList.remove("show");
+          }, 5000);
+        }
     </script>
   </body>
 </html>
