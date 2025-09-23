@@ -99,16 +99,6 @@
    <main class="main">
     <!-- Page Title -->
     <div class="page-title dark-background" data-aos="fade">
-      <div class="heading">
-        <div class="container">
-          <div class="row d-flex justify-content-center text-center">
-            <div class="col-lg-8">
-              <h1>Image to Text Converter</h1>
-              <p class="mb-0">Extract text from images, photos, and scanned documents with our free online OCR tool. Supports JPG, PNG, HEIC, and more.</p>
-            </div>
-          </div>
-        </div>
-      </div>
       <nav class="breadcrumbs">
         <div class="container">
           <ol>

@@ -68,14 +68,6 @@
     <!-- Page Title -->
     <div class="page-title dark-background" data-aos="fade">
       <div class="heading">
-        <div class="container">
-          <div class="row d-flex justify-content-center text-center">
-            <div class="col-lg-8">
-              <h1>YouTube Thumbnail Downloader</h1>
-              <p class="mb-0">Download high-quality thumbnails from any YouTube video instantly. Get HD/SD versions with our free thumbnail grabber tool.</p>
-            </div>
-          </div>
-        </div>
       </div>
       <nav class="breadcrumbs">
         <div class="container">

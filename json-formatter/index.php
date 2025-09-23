@@ -122,14 +122,14 @@
     <!-- Page Title -->
     <div class="page-title dark-background" data-aos="fade">
       <div class="heading">
-        <div class="container">
+        <!-- <div class="container">
           <div class="row d-flex justify-content-center text-center">
             <div class="col-lg-8">
               <h1>JSON Formatter Online</h1>
               <p class="mb-0">Free online tool to format, validate, beautify, and analyze JSON data. Works as both JSON viewer and editor.</p>
             </div>
           </div>
-        </div>
+        </div> -->
       </div>
       <nav class="breadcrumbs">
         <div class="container">
@@ -150,81 +150,81 @@
       </div>
 
       <div class="container" data-aos="fade-up" data-aos-delay="100">
-  <div class="row">
-    <div class="col-lg-12">
-      <div class="btn-group-actions mb-4">
-        <button id="format-btn" class="btn btn-primary">
-          <i class="bi bi-code-square me-2"></i>Format JSON
-        </button>
-        <button id="minify-btn" class="btn btn-secondary">
-          <i class="bi bi-file-minus me-2"></i>Minify JSON
-        </button>
-        <button id="validate-btn" class="btn btn-success">
-          <i class="bi bi-check-circle me-2"></i>Validate
-        </button>
-        <button id="clear-btn" class="btn btn-danger">
-          <i class="bi bi-trash me-2"></i>Clear
-        </button>
-        <button id="copy-btn" class="btn btn-info">
-          <i class="bi bi-clipboard me-2"></i>Copy
-        </button>
-        <button id="download-btn" class="btn btn-warning">
-          <i class="bi bi-download me-2"></i>Download
-        </button>
-        <button id="sample-btn" class="btn btn-light">
-          <i class="bi bi-file-earmark-code me-2"></i>Load Sample
-        </button>
-      </div>
-
-      <div class="row g-4">
-        <!-- Input Column -->
-        <div class="col-md-4">
-          <h5 class="mb-3 text-center"><i class="bi bi-input-cursor-text me-2"></i>JSON Input</h5>
-          <div class="editor-container">
-            <textarea id="json-input" class="form-control" 
-                     placeholder='Paste your JSON here or click "Load Sample"'
-                     oninput="formatJsonLive()"></textarea>
-          </div>
-        </div>
-        
-        <!-- Formatted Output Column -->
-        <div class="col-md-4">
-          <h5 class="mb-3 text-center"><i class="bi bi-code-slash me-2"></i>Formatted Output</h5>
-          <div class="editor-container">
-            <pre id="json-output" class="h-100">Formatted JSON will appear here</pre>
-          </div>
-        </div>
-        
-        <!-- Tree View Column -->
-        <div class="col-md-4">
-          <h5 class="mb-3 text-center"><i class="bi bi-diagram-3 me-2"></i>Tree View</h5>
-          <div class="editor-container">
-            <div id="json-tree" class="tree-view h-100">Tree visualization will appear here</div>
-          </div>
-        </div>
-      </div>
-
-      <div id="json-stats" class="json-stats mt-4" style="display: none;">
         <div class="row">
-          <div class="col-md-3">
-            <strong>Status:</strong> <span id="validation-status" class="text-success">Valid JSON</span>
-          </div>
-          <div class="col-md-3">
-            <strong>Size:</strong> <span id="json-size">0</span> bytes
-          </div>
-          <div class="col-md-3">
-            <strong>Characters:</strong> <span id="json-chars">0</span>
-          </div>
-          <div class="col-md-3">
-            <strong>Lines:</strong> <span id="json-lines">0</span>
+          <div class="col-lg-12">
+            <div class="btn-group-actions mb-4">
+              <button id="format-btn" class="btn btn-primary">
+                <i class="bi bi-code-square me-2"></i>Format JSON
+              </button>
+              <button id="minify-btn" class="btn btn-secondary">
+                <i class="bi bi-file-minus me-2"></i>Minify JSON
+              </button>
+              <button id="validate-btn" class="btn btn-success">
+                <i class="bi bi-check-circle me-2"></i>Validate
+              </button>
+              <button id="clear-btn" class="btn btn-danger">
+                <i class="bi bi-trash me-2"></i>Clear
+              </button>
+              <button id="copy-btn" class="btn btn-info">
+                <i class="bi bi-clipboard me-2"></i>Copy
+              </button>
+              <button id="download-btn" class="btn btn-warning">
+                <i class="bi bi-download me-2"></i>Download
+              </button>
+              <button id="sample-btn" class="btn btn-light">
+                <i class="bi bi-file-earmark-code me-2"></i>Load Sample
+              </button>
+            </div>
+
+            <div class="row g-4">
+              <!-- Input Column -->
+              <div class="col-md-4">
+                <h5 class="mb-3 text-center"><i class="bi bi-input-cursor-text me-2"></i>JSON Input</h5>
+                <div class="editor-container">
+                  <textarea id="json-input" class="form-control" 
+                           placeholder='Paste your JSON here or click "Load Sample"'
+                           oninput="formatJsonLive()"></textarea>
+                </div>
+              </div>
+              
+              <!-- Formatted Output Column -->
+              <div class="col-md-4">
+                <h5 class="mb-3 text-center"><i class="bi bi-code-slash me-2"></i>Formatted Output</h5>
+                <div class="editor-container">
+                  <pre id="json-output" class="h-100">Formatted JSON will appear here</pre>
+                </div>
+              </div>
+              
+              <!-- Tree View Column -->
+              <div class="col-md-4">
+                <h5 class="mb-3 text-center"><i class="bi bi-diagram-3 me-2"></i>Tree View</h5>
+                <div class="editor-container">
+                  <div id="json-tree" class="tree-view h-100">Tree visualization will appear here</div>
+                </div>
+              </div>
+            </div>
+
+            <div id="json-stats" class="json-stats mt-4" style="display: none;">
+              <div class="row">
+                <div class="col-md-3">
+                  <strong>Status:</strong> <span id="validation-status" class="text-success">Valid JSON</span>
+                </div>
+                <div class="col-md-3">
+                  <strong>Size:</strong> <span id="json-size">0</span> bytes
+                </div>
+                <div class="col-md-3">
+                  <strong>Characters:</strong> <span id="json-chars">0</span>
+                </div>
+                <div class="col-md-3">
+                  <strong>Lines:</strong> <span id="json-lines">0</span>
+                </div>
+              </div>
+            </div>
+
+            <div id="error-message" class="error-message mt-3" style="display: none;"></div>
           </div>
         </div>
       </div>
-
-      <div id="error-message" class="error-message mt-3" style="display: none;"></div>
-    </div>
-  </div>
-</div>
       
       <!-- Hidden SEO Content -->
       <div class="seo-keywords">

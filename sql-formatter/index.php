@@ -104,14 +104,6 @@
     <!-- Page Title -->
     <div class="page-title dark-background" data-aos="fade">
       <div class="heading">
-        <div class="container">
-          <div class="row d-flex justify-content-center text-center">
-            <div class="col-lg-8">
-              <h1>SQL Formatter</h1>
-              <p class="mb-0">Beautify and format your SQL queries for better readability and maintainability. Customize formatting with various options.</p>
-            </div>
-          </div>
-        </div>
       </div>
       <nav class="breadcrumbs">
         <div class="container">

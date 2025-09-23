@@ -99,14 +99,6 @@
     <!-- Page Title -->
     <div class="page-title dark-background" data-aos="fade">
       <div class="heading">
-        <div class="container">
-          <div class="row d-flex justify-content-center text-center">
-            <div class="col-lg-8">
-              <h1>Password Generator</h1>
-              <p class="mb-0">Create strong and secure passwords to keep your accounts safe online. Customize your password with various options.</p>
-            </div>
-          </div>
-        </div>
       </div>
       <nav class="breadcrumbs">
         <div class="container">

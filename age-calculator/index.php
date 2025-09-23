@@ -79,14 +79,14 @@
     <!-- Page Title -->
     <div class="page-title dark-background" data-aos="fade">
       <div class="heading">
-        <div class="container">
+        <!-- <div class="container">
           <div class="row d-flex justify-content-center text-center">
             <div class="col-lg-8">
               <h1>Age Calculator</h1>
               <p class="mb-0">Calculate your exact age in years, months, days, hours, minutes and seconds from your date of birth.</p>
             </div>
           </div>
-        </div>
+        </div> -->
       </div>
       <nav class="breadcrumbs">
         <div class="container">

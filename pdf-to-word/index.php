@@ -49,14 +49,6 @@
     <!-- Page Title -->
     <div class="page-title dark-background" data-aos="fade">
       <div class="heading">
-        <div class="container">
-          <div class="row d-flex justify-content-center text-center">
-            <div class="col-lg-8">
-              <h1>PDF to Word Converter</h1>
-              <p class="mb-0">Convert your PDF files to editable Word documents with high accuracy. Preserves formatting and layout.</p>
-            </div>
-          </div>
-        </div>
       </div>
       <nav class="breadcrumbs">
         <div class="container">
