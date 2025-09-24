@@ -332,7 +332,7 @@
                     <!-- Logo Tab -->
                     <div class="tab-pane fade" id="logo" role="tabpanel">
                       <div class="logo-upload-container" id="logo-upload">
-                        <img id="logo-preview" class="logo-preview">
+                        <img id="logo-preview" class="logo-preview" alt="logo-preview">
                         <div id="logo-upload-text">
                           <i class="bi bi-image fs-1 text-muted"></i>
                           <p class="mb-1">Click to upload logo</p>

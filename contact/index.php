@@ -45,7 +45,7 @@
 
       <a href="../" class="logo d-flex align-items-center">
         <!-- Uncomment the line below if you also wish to use an image logo -->
-        <img src="../assets/img/logo.png" alt="">
+        <img src="../assets/img/logo.png" alt="logo">
         <h1 class="sitename">AccuWebTools</h1>
       </a>
 

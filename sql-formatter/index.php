@@ -113,7 +113,7 @@
           </ol>
         </div>
       </nav>
-    </div><!-- End Page Title -->
+    </div>
 
     <!-- SQL Formatter Section -->
     <section id="sql-formatter" class="section">
