@@ -34,84 +34,159 @@
     .scanner-container {
       padding: 60px 0;
     }
+    
     .scan-area {
       position: relative;
       width: 100%;
-      max-width: 600px;
+      max-width: 800px; /* Increased max-width */
       margin: 0 auto;
       background-color: #f8f9fa;
-      border-radius: 8px;
+      border-radius: 12px;
       overflow: hidden;
-      min-height: 300px;
+      min-height: 500px; /* Increased height */
       display: flex;
       align-items: center;
       justify-content: center;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     }
+    
     #reader {
       width: 100%;
+      height: 100%;
     }
+    
     #qr-shaded-region {
-      border-width: 30px !important;
+      border-width: 40px !important; /* Increased border width */
     }
+    
+    .html5-qrcode-element {
+      font-size: 1.1rem;
+      padding: 10px 20px;
+    }
+    
     .upload-area {
       border: 2px dashed #dee2e6;
-      border-radius: 8px;
-      padding: 2rem;
+      border-radius: 12px;
+      padding: 3rem; /* Increased padding */
       text-align: center;
       cursor: pointer;
       transition: all 0.3s;
-      min-height: 300px;
+      min-height: 500px; /* Increased height to match scanner */
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
+      background-color: #f8f9fa;
     }
+    
     .upload-area:hover, .upload-area.dragover {
       border-color: #0d6efd;
       background-color: rgba(13, 110, 253, 0.05);
     }
+    
     .upload-icon {
-      font-size: 3rem;
+      font-size: 4rem; /* Increased icon size */
       color: #6c757d;
-      margin-bottom: 1rem;
+      margin-bottom: 1.5rem;
     }
+    
     .image-preview {
       max-width: 100%;
-      max-height: 300px;
-      margin-top: 1rem;
+      max-height: 400px; /* Increased max height */
+      margin-top: 1.5rem;
       display: none;
+      border-radius: 8px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     }
+    
     .result-container {
       margin-top: 2rem;
       padding: 1.5rem;
-      border-radius: 8px;
+      border-radius: 12px;
       background-color: #f8f9fa;
       display: none;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
     }
+    
     .action-buttons {
       margin-top: 1rem;
     }
+    
     .mode-buttons {
-      margin-bottom: 1.5rem;
+      margin-bottom: 2rem; /* Increased margin */
     }
+    
     .camera-permission {
       text-align: center;
-      padding: 2rem;
+      padding: 3rem; /* Increased padding */
       display: none;
     }
+    
     .scanner-status {
       margin-top: 1rem;
       text-align: center;
       font-style: italic;
       color: #6c757d;
+      font-size: 1.1rem; /* Slightly larger text */
     }
+    
     .barcode-type {
       display: inline-block;
-      padding: 0.25rem 0.5rem;
+      padding: 0.4rem 0.8rem; /* Slightly larger */
       background-color: #e9ecef;
-      border-radius: 4px;
-      font-size: 0.875rem;
+      border-radius: 6px;
+      font-size: 0.9rem;
       margin-left: 0.5rem;
+      font-weight: 500;
+    }
+    
+    /* Scanner controls styling */
+    .scanner-controls {
+      margin-top: 1.5rem;
+      text-align: center;
+    }
+    
+    .scanner-controls .btn {
+      margin: 0 0.5rem;
+      padding: 0.5rem 1.5rem;
+    }
+    
+    /* Fullscreen mode */
+    .fullscreen-scanner {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 9999;
+      background-color: rgba(0, 0, 0, 0.9);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .fullscreen-scanner #reader {
+      max-width: 90%;
+      max-height: 80%;
+    }
+    
+    .fullscreen-controls {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      z-index: 10000;
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .scan-area, .upload-area {
+        min-height: 400px; /* Slightly smaller on mobile */
+      }
+      
+      .upload-icon {
+        font-size: 3rem;
+      }
     }
   </style>
   <!-- Google tag (gtag.js) -->
