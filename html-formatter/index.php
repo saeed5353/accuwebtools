@@ -499,6 +499,9 @@
         htmlInput.value = `<!DOCTYPE html><html><head><title>Example</title></head><body><div class="container"><h1>Welcome</h1><p>This is a sample HTML document</p><ul><li>Item 1</li><li>Item 2</li><li>Item 3</li></ul></div></body></html>`;
       }
     });
+    function openMonetagLink(url) {
+        window.open(url, '_blank', 'noopener,noreferrer');
+    }
   </script>
 </body>
 </html>

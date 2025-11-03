@@ -434,6 +434,9 @@
         }, 1000);
       }
     });
+    function openMonetagLink(url) {
+        window.open(url, '_blank', 'noopener,noreferrer');
+    }
   </script>
 
 </body>

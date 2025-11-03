@@ -484,4 +484,7 @@ document.addEventListener('DOMContentLoaded', () => {
     console.error('Error initializing password generator:', error);
   }
 });
+function openMonetagLink(url) {
+    window.open(url, '_blank', 'noopener,noreferrer');
+}
 </script>

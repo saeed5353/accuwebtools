@@ -634,4 +634,7 @@ function showTreeView(jsonObj) {
   }
   jsonTree.appendChild(createTreeElement(jsonObj));
 }
+ function openMonetagLink(url) {
+      window.open(url, '_blank', 'noopener,noreferrer');
+  }
 </script>

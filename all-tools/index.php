@@ -196,5 +196,10 @@
     <script src="../assets/vendor/swiper/swiper-bundle.min.js"></script>
     <!-- Main JS File -->
     <script src="../assets/js/main.js"></script>
+    <script>
+      function openMonetagLink(url) {
+        window.open(url, '_blank', 'noopener,noreferrer');
+      }
+    </script>
   </body>
 </html>
