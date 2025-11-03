@@ -262,7 +262,23 @@
         </div>
       </div>
     </section>
-
+    <section class="footer-monetag">
+      <div class="container text-center">
+        <h4 class="mb-3">Discover Amazing Deals & Offers</h4>
+        <p class="mb-4">Check out these exclusive offers from our partners</p>
+        <div class="d-flex flex-wrap justify-content-center gap-3">
+          <button class="monetag-button" onclick="openMonetagLink('https://otieu.com/4/9647626')">
+            <i class="bi bi-gift"></i> Special Offers
+          </button>
+          <button class="monetag-button" onclick="openMonetagLink('https://otieu.com/4/10059978')">
+            <i class="bi bi-tags"></i> Exclusive Deals
+          </button>
+          <button class="monetag-button" onclick="openMonetagLink('https://otieu.com/4/10062700')">
+            <i class="bi bi-lightning"></i> Quick Rewards
+          </button>
+        </div>
+      </div>
+    </section>
   </main>
 
   <?php include '../includes/footer.php'; ?>
