@@ -3,24 +3,56 @@
   include("../includes/track_visitors.php"); 
   include("../BlogPosts.php");
   
-  // Get the slug from the URL
-  $slug = isset($_GET['id']) ? $_GET['id'] : '';
+  // Initialize Blog object
+  $blog = new Blog($db);
+  
+  // Get the slug from the URL (multiple fallback methods for compatibility)
+  $slug = '';
+  
+  // Method 1: Check if slug is in query parameter (works with .htaccess rewrite)
+  if (isset($_GET['slug']) && !empty($_GET['slug'])) {
+    $slug = trim($_GET['slug']);
+  } 
+  // Method 2: Parse from REQUEST_URI (works even if mod_rewrite is disabled)
+  elseif (isset($_SERVER['REQUEST_URI'])) {
+    $requestUri = $_SERVER['REQUEST_URI'];
+    // Extract slug from URL pattern: /blog-detail/post-slug or /toolswebsite/blog-detail/post-slug
+    if (preg_match('#/blog-detail/([^/?]+)#', $requestUri, $matches)) {
+      $slug = trim($matches[1]);
+    }
+  }
+  // Method 3: Check PATH_INFO for direct pretty URLs
+  elseif (isset($_SERVER['PATH_INFO']) && !empty($_SERVER['PATH_INFO'])) {
+    $slug = trim($_SERVER['PATH_INFO'], '/');
+  }
+  // Method 4: Fallback - check if id is provided (for backward compatibility with old URLs)
+  elseif (isset($_GET['id']) && !empty($_GET['id'])) {
+    // Try to get post by ID first, then use its slug for redirect to pretty URL
+    $postById = $blog->getPostById($_GET['id']);
+    if ($postById && !empty($postById['slug'])) {
+      // Redirect to pretty URL
+      header("Location: " . urlencode($postById['slug']));
+      exit();
+    }
+  }
+  
+  // Trim whitespace from slug
+  $slug = trim($slug);
   
   if(empty($slug)) {
     // Redirect to homepage if no slug provided
-    header("Location: index.php");
+    header("Location: ../index.php");
     exit();
   }
   
-  $blog = new Blog($db);
-  $post = $blog->getPostById($slug);
+  $post = $blog->getPostBySlug($slug);
   
   if(!$post) {
     // Redirect to 404 page if post not found
-    header("Location: 404.php");
+    header("Location: ../404.php");
     exit();
   }
- 
+
 ?>
 <!DOCTYPE html>
 <html lang="en">

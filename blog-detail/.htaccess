@@ -1,0 +1,8 @@
+RewriteEngine On
+
+# Fallback .htaccess in blog-detail folder
+# This handles URLs like /blog-detail/post-slug when accessed directly
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_URI} ^.*/blog-detail/([^/]+)/?$
+RewriteRule ^(.*)$ index.php?slug=%1 [L,QSA]

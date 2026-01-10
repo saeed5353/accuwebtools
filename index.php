@@ -353,7 +353,7 @@
           <?php foreach ($blogposts as $post): ?>
             <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100" style="margin-top:5px;">
               <div class="card blog-card h-100">
-                <a href="blog-detail/?id=<?php echo $post['id']; ?>" rel="nofollow">
+                <a href="blog-detail/<?php echo urlencode($post['slug']); ?>" rel="nofollow">
                   <img src="uploads/<?php echo $post['image']; ?>" class="card-img-top" alt="<?php echo htmlspecialchars($post['title']); ?>">
                 </a>
                 <div class="card-body">
@@ -362,7 +362,7 @@
                     <small class="text-muted"><?php echo date("M d, Y", strtotime($post['created_at'])); ?></small>
                   </div>
                   <h5 class="card-title">
-                    <a href="blog-detail/?id=<?php echo $post['id']; ?>" rel="nofollow sponsored">
+                    <a href="blog-detail/<?php echo urlencode($post['slug']); ?>" rel="nofollow sponsored">
                       <?php echo $post['title']; ?>
                     </a>
                   </h5>
@@ -371,7 +371,7 @@
                       $desc = strip_tags($post['description']);
                       if (strlen($desc) > 200) {
                           echo substr($desc, 0, 200) . "...<br>";
-                          echo "<a href='blog-detail/?id=" . $post['id'] . "' rel='nofollow'>Read More</a>";
+                          echo "<a href='blog-detail/" . urlencode($post['slug']) . "' rel='nofollow'>Read More</a>";
                       } else {
                           echo $desc;
                       }

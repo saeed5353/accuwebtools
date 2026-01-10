@@ -88,7 +88,7 @@
 
                       <div class="card-body d-flex flex-column">
                         <h5 class="card-title">
-                          <a href="../blog-detail?id=<?php echo urlencode($post['id']); ?>" class="text-dark text-decoration-none">
+                          <a href="../blog-detail/<?php echo urlencode($post['slug']); ?>" class="text-dark text-decoration-none">
                             <?php echo htmlspecialchars($post['title']); ?>
                           </a>
                         </h5>
@@ -101,7 +101,7 @@
                         <p class="card-text flex-grow-1">
                           <?php echo substr(strip_tags($post['description']), 0, 100) . '...'; ?>
                         </p>
-                        <a href="../blog-detail/?id=<?php echo urlencode($post['id']); ?>" class="btn btn-outline-primary mt-auto">Read More</a>
+                        <a href="../blog-detail/<?php echo urlencode($post['slug']); ?>" class="btn btn-outline-primary mt-auto">Read More</a>
                       </div>
                     </div>
                   </div>
