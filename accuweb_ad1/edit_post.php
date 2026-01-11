@@ -31,7 +31,7 @@
 	<link rel="stylesheet" href="assets/css/ready.css">
 	<link rel="stylesheet" href="assets/css/demo.css">
 	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-	<script src="https://cdn.tiny.cloud/1/ptluggoy0cn47p8p06ypeh0ce8moywd8xut6d11hnffs2w8i/tinymce/8/tinymce.min.js" referrerpolicy="origin" crossorigin="anonymous"></script>
+	<script src="https://cdn.ckeditor.com/ckeditor5/41.1.0/classic/ckeditor.js"></script>
 </head>
 <body>
 	<div class="wrapper">
@@ -127,23 +127,79 @@
 <script src="assets/js/demo.js"></script>
 </html>
 <script>
-	tinymce.init({
-    selector: '#description',
-    plugins: [
-      // Core editing features
-      'anchor', 'autolink', 'charmap', 'codesample', 'emoticons', 'link', 'lists', 'media', 'searchreplace', 'table', 'visualblocks', 'wordcount',
-      // Your account includes a free trial of TinyMCE premium features
-      // Try the most popular premium features until Sep 15, 2025:
-      'checklist', 'mediaembed', 'casechange', 'formatpainter', 'pageembed', 'a11ychecker', 'tinymcespellchecker', 'permanentpen', 'powerpaste', 'advtable', 'advcode', 'advtemplate', 'ai', 'uploadcare', 'mentions', 'tinycomments', 'tableofcontents', 'footnotes', 'mergetags', 'autocorrect', 'typography', 'inlinecss', 'markdown','importword', 'exportword', 'exportpdf'
-    ],
-    toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link media table mergetags | addcomment showcomments | spellcheckdialog a11ycheck typography uploadcare | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat',
-    tinycomments_mode: 'embedded',
-    tinycomments_author: 'Author name',
-    mergetags_list: [
-      { value: 'First.Name', title: 'First Name' },
-      { value: 'Email', title: 'Email' },
-    ],
-    ai_request: (request, respondWith) => respondWith.string(() => Promise.reject('See docs to implement AI Assistant')),
-    uploadcare_public_key: 'af8f2f381cf208f02e0e',
-  });
+	ClassicEditor
+		.create(document.querySelector('#description'), {
+			toolbar: {
+				items: [
+					'heading', '|',
+					'bold', 'italic', 'underline', 'strikethrough', '|',
+					'fontSize', 'fontFamily', 'fontColor', 'fontBackgroundColor', '|',
+					'bulletedList', 'numberedList', '|',
+					'outdent', 'indent', '|',
+					'alignment', '|',
+					'link', 'insertTable', 'blockQuote', 'codeBlock', '|',
+					'imageUpload', 'mediaEmbed', '|',
+					'undo', 'redo', '|',
+					'findAndReplace', 'selectAll', '|',
+					'horizontalLine', 'specialCharacters', '|',
+					'removeFormat'
+				],
+				shouldNotGroupWhenFull: true
+			},
+			heading: {
+				options: [
+					{ model: 'paragraph', title: 'Paragraph', class: 'ck-heading_paragraph' },
+					{ model: 'heading1', view: 'h1', title: 'Heading 1', class: 'ck-heading_heading1' },
+					{ model: 'heading2', view: 'h2', title: 'Heading 2', class: 'ck-heading_heading2' },
+					{ model: 'heading3', view: 'h3', title: 'Heading 3', class: 'ck-heading_heading3' },
+					{ model: 'heading4', view: 'h4', title: 'Heading 4', class: 'ck-heading_heading4' }
+				]
+			},
+			fontSize: {
+				options: [9, 11, 13, 'default', 17, 19, 21, 27, 35],
+				supportAllValues: true
+			},
+			fontFamily: {
+				options: [
+					'default',
+					'Arial, Helvetica, sans-serif',
+					'Courier New, Courier, monospace',
+					'Georgia, serif',
+					'Lucida Sans Unicode, Lucida Grande, sans-serif',
+					'Tahoma, Geneva, sans-serif',
+					'Times New Roman, Times, serif',
+					'Trebuchet MS, Helvetica, sans-serif',
+					'Verdana, Geneva, sans-serif'
+				],
+				supportAllValues: true
+			},
+			link: {
+				decorators: {
+					addTargetToExternalLinks: true,
+					defaultProtocol: 'https://',
+					toggleDownloadable: {
+						mode: 'manual',
+						label: 'Downloadable',
+						attributes: {
+							download: 'file'
+						}
+					}
+				}
+			},
+			table: {
+				contentToolbar: ['tableColumn', 'tableRow', 'mergeTableCells', 'tableProperties', 'tableCellProperties']
+			},
+			mediaEmbed: {
+				previewsInData: true
+			},
+			image: {
+				toolbar: ['imageTextAlternative', 'toggleImageCaption', 'imageStyle:inline', 'imageStyle:block', 'imageStyle:side', 'linkImage']
+			}
+		})
+		.then(editor => {
+			console.log('CKEditor initialized successfully', editor);
+		})
+		.catch(error => {
+			console.error('Error initializing CKEditor:', error);
+		});
 </script>
