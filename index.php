@@ -309,6 +309,15 @@
               </div>
             </a>
           </div>
+          
+          <div class="col-lg-3 col-md-4 col-6" data-aos="fade-up" data-aos-delay="600">
+            <a href="base64-encoder-decoder" class="card tool-card h-100 text-decoration-none">
+              <div class="card-body p-3 text-center">
+                <i class="bi bi-code-square tool-icon" style="color: #6c757d; font-size: 2rem;"></i>
+                <h5 class="card-title mb-0">Base64 Encoder/Decoder</h5>
+              </div>
+            </a>
+          </div>
         </div>
       </div>
     </section>
