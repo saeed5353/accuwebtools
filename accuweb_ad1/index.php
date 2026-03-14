@@ -14,19 +14,50 @@
 
 	$data = new Data($db);
 
-	// Call functions
+	// Call functions for headline stats
 	$totalVisitors = $data->getTotalVisitors();
 	$todayVisitors = $data->getTodayVisitors();
 	$TotalUniqueVisitors = $data->getTotalUniqueVisitors();
 	$getUniqueTodayVisitors = $data->getUniqueTodayVisitors();
-	$getMonthlyVisitors = $data->getMonthlyVisitors();
+
+	// Time range filters for visitors chart
+	$range = isset($_GET['range']) ? $_GET['range'] : '6m';
+	$today = date('Y-m-d');
+	$startDate = null;
+	$endDate = isset($_GET['end_date']) && !empty($_GET['end_date']) ? $_GET['end_date'] : $today;
+
+	switch ($range) {
+	    case '3m':
+	        $startDate = date('Y-m-d', strtotime('-3 months', strtotime($endDate)));
+	        break;
+	    case '6m':
+	        $startDate = date('Y-m-d', strtotime('-6 months', strtotime($endDate)));
+	        break;
+	    case '1y':
+	        $startDate = date('Y-m-d', strtotime('-12 months', strtotime($endDate)));
+	        break;
+	    case 'custom':
+	        if (!empty($_GET['start_date'])) {
+	            $startDate = $_GET['start_date'];
+	        }
+	        if (empty($startDate)) {
+	            $startDate = date('Y-m-d', strtotime('-6 months', strtotime($endDate)));
+	        }
+	        break;
+	    default:
+	        $startDate = date('Y-m-d', strtotime('-6 months', strtotime($endDate)));
+	        $range = '6m';
+	        break;
+	}
+
+	$getMonthlyVisitors = $data->getVisitorsByRange($startDate, $endDate);
 
 	$months = [];
 	$totalVisitorsgraph = [];
 	$uniqueVisitors = [];
 
 	foreach ($getMonthlyVisitors as $row) {
-	    $months[] = $row['month'];  
+	    $months[] = $row['label'];  
 	    $totalVisitorsgraph[] = (int)$row['total_visitors'];
 	    $uniqueVisitors[] = (int)$row['unique_visitors'];
 	}
@@ -307,10 +338,31 @@
 							</div>
 							<div class="col-md-7">
 								<div class="card">
-									<div class="card-header">
-										<h4 class="card-title">Website Visitors Stats</h4>
-										<p class="card-category">
-										Monthwise Visitors Comparison</p>
+									<div class="card-header d-flex flex-wrap justify-content-between align-items-center">
+										<div>
+											<h4 class="card-title mb-0">Website Visitors Stats</h4>
+											<p class="card-category mb-0">
+												Visitors comparison
+												<small class="text-muted d-block">
+													<?php echo date('M d, Y', strtotime($startDate)); ?> - <?php echo date('M d, Y', strtotime($endDate)); ?>
+												</small>
+											</p>
+										</div>
+										<form method="get" class="form-inline mt-2 mt-md-0">
+											<select name="range" class="form-control form-control-sm mr-2" onchange="this.form.submit()">
+												<option value="3m" <?php echo $range === '3m' ? 'selected' : ''; ?>>Last 3 months</option>
+												<option value="6m" <?php echo $range === '6m' ? 'selected' : ''; ?>>Last 6 months</option>
+												<option value="1y" <?php echo $range === '1y' ? 'selected' : ''; ?>>Last 1 year</option>
+												<option value="custom" <?php echo $range === 'custom' ? 'selected' : ''; ?>>Custom range</option>
+											</select>
+											<input type="date" name="start_date" id="start_date" class="form-control form-control-sm mr-2"
+												value="<?php echo htmlspecialchars($startDate); ?>">
+											<input type="date" name="end_date" id="end_date" class="form-control form-control-sm mr-2"
+												value="<?php echo htmlspecialchars($endDate); ?>">
+											<noscript>
+												<button type="submit" class="btn btn-primary btn-sm">Apply</button>
+											</noscript>
+										</form>
 									</div>
 									<div class="card-body">
 										<canvas id="salesChart"></canvas>
@@ -425,4 +477,22 @@
             }
         }
     });
+
+    // Enable/disable custom date inputs based on selected range
+    (function() {
+        var rangeSelect = document.querySelector('select[name="range"]');
+        var startInput = document.getElementById('start_date');
+        var endInput = document.getElementById('end_date');
+        if (!rangeSelect || !startInput || !endInput) return;
+
+        function toggleDateInputs() {
+            var isCustom = rangeSelect.value === 'custom';
+            startInput.disabled = !isCustom;
+            endInput.disabled = !isCustom;
+        }
+
+        rangeSelect.addEventListener('change', toggleDateInputs);
+        // Initialize on load
+        toggleDateInputs();
+    })();
 </script>

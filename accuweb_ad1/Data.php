@@ -56,13 +56,13 @@ class Data {
     public function getMonthlyVisitors() {
         $sql = "
             SELECT 
-            DATE_FORMAT(visit_time, '%b') AS month_name,
-            COUNT(ip_address) AS total_visitors,
-            COUNT(DISTINCT ip_address) AS unique_visitors
-        FROM visitor_logs
-        WHERE YEAR(visit_time) = YEAR(CURDATE())
-        GROUP BY MONTH(visit_time)
-        ORDER BY MONTH(visit_time) ASC;
+                DATE_FORMAT(visit_time, '%b') AS month_name,
+                COUNT(ip_address) AS total_visitors,
+                COUNT(DISTINCT ip_address) AS unique_visitors
+            FROM visitor_logs
+            WHERE YEAR(visit_time) = YEAR(CURDATE())
+            GROUP BY MONTH(visit_time)
+            ORDER BY MONTH(visit_time) ASC;
         ";
 
         $result = $this->conn->query($sql);
@@ -72,8 +72,39 @@ class Data {
             while ($row = $result->fetch_assoc()) {
                 $data[] = [
                     'month' => $row['month_name'],
-                    'total_visitors' => $row['total_visitors'],
-                    'unique_visitors' => $row['unique_visitors']
+                    'total_visitors' => (int)$row['total_visitors'],
+                    'unique_visitors' => (int)$row['unique_visitors']
+                ];
+            }
+        }
+
+        return $data;
+    }
+
+    public function getVisitorsByRange($startDate, $endDate) {
+        $startDate = $this->conn->real_escape_string($startDate);
+        $endDate = $this->conn->real_escape_string($endDate);
+
+        $sql = "
+            SELECT 
+                DATE_FORMAT(visit_time, '%b %Y') AS period_label,
+                COUNT(ip_address) AS total_visitors,
+                COUNT(DISTINCT ip_address) AS unique_visitors
+            FROM visitor_logs
+            WHERE DATE(visit_time) BETWEEN '$startDate' AND '$endDate'
+            GROUP BY YEAR(visit_time), MONTH(visit_time)
+            ORDER BY YEAR(visit_time), MONTH(visit_time) ASC;
+        ";
+
+        $result = $this->conn->query($sql);
+        $data = [];
+
+        if ($result) {
+            while ($row = $result->fetch_assoc()) {
+                $data[] = [
+                    'label' => $row['period_label'],
+                    'total_visitors' => (int)$row['total_visitors'],
+                    'unique_visitors' => (int)$row['unique_visitors']
                 ];
             }
         }

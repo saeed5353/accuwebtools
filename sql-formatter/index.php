@@ -29,18 +29,20 @@
   <style>
     .sql-keyword {
       font-weight: bold;
-      color: #0d6efd; /* Blue for keywords */
+      color: #0d6efd; /* Blue for SQL keywords */
     }
 
     .sql-function {
-      color: #9c27b0; /* Purple for SQL functions */
+      color: #6f42c1; /* Purple for SQL functions */
       font-weight: bold;
     }
+
     .code-editor {
       font-family: 'Courier New', Courier, monospace;
       min-height: 300px;
       border-radius: 5px;
     }
+
     .formatted-output {
       background-color: #f8f9fa;
       border: 1px solid #dee2e6;
@@ -49,43 +51,61 @@
       min-height: 300px;
       white-space: pre-wrap;
       font-family: 'Courier New', Courier, monospace;
+      color: #212529;
+      overflow: auto;
     }
+
     .copy-btn {
       transition: all 0.3s;
     }
+
     .copy-btn:hover {
       transform: translateY(-2px);
     }
+
     .copy-btn.copied {
       background-color: #28a745 !important;
       border-color: #28a745 !important;
     }
+
     .option-card {
       cursor: pointer;
       transition: all 0.2s;
     }
+
     .option-card:hover {
       transform: scale(1.02);
       box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
     }
+
     .option-active {
       background-color: #0d6efd;
       color: white;
     }
+
     .seo-keywords {
       display: none; /* Hide but keep for SEO */
     }
+
     .sample-query-btn {
       position: absolute;
       right: 15px;
       top: 10px;
       z-index: 10;
     }
-    .sql-keyword {
-      font-weight: bold;
-      color: #0d6efd;
+
+    .sql-string {
+      color: #f97316;
     }
 
+    .sql-number {
+      color: #22c55e;
+    }
+
+    .sql-comment {
+      color: #6c757d;
+      font-style: italic;
+    }
   </style>
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-B9CT86JSTC"></script>
@@ -123,9 +143,9 @@
         <p class="mt-3">Improve readability of your SQL code with customizable formatting options</p>
       </div>
 
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
-        <div class="row d-flex justify-content-center">
-          <div class="col-lg-10">
+      <div class="container-fluid px-3 px-lg-4" data-aos="fade-up" data-aos-delay="100">
+        <div class="row">
+          <div class="col-12">
             <div class="card shadow-sm">
               <div class="card-body">
                 <!-- Input/Output Area -->
@@ -142,17 +162,34 @@
                   </div>
                 </div>
                 
-                <!-- Action Buttons -->
-                <div class="row mt-3">
-                  <div class="col-md-6">
-                    <!-- <button class="btn btn-primary w-100 py-2" id="format-btn">
-                      <i class="bi bi-magic me-2"></i> Format SQL
-                    </button> -->
+                <!-- Action Buttons & Options -->
+                <div class="row mt-3 align-items-end g-3">
+                  <div class="col-md-4">
+                    <label for="indentation-size" class="form-label mb-1">Indentation</label>
+                    <select class="form-select form-select-sm" id="indentation-size">
+                      <option value="2">2 spaces</option>
+                      <option value="4" selected>4 spaces</option>
+                      <option value="8">8 spaces</option>
+                      <option value="tab">Tab</option>
+                    </select>
                   </div>
-                  <div class="col-md-6">
-                    <button class="btn btn-success w-100 py-2 copy-btn" id="copy-output-btn">
-                      <i class="bi bi-clipboard me-2"></i> Copy Formatted SQL
-                    </button>
+                  <div class="col-md-4">
+                    <div class="form-check mt-4">
+                      <input class="form-check-input" type="checkbox" id="uppercase-keywords" checked>
+                      <label class="form-check-label" for="uppercase-keywords">
+                        Uppercase SQL keywords
+                      </label>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="d-grid d-md-flex justify-content-md-end gap-2">
+                      <button class="btn btn-primary py-2 w-100 w-md-auto" id="format-btn">
+                        <i class="bi bi-magic me-2"></i> Format SQL
+                      </button>
+                      <button class="btn btn-success py-2 w-100 w-md-auto copy-btn" id="copy-output-btn">
+                        <i class="bi bi-clipboard me-2"></i> Copy Formatted SQL
+                      </button>
+                    </div>
                   </div>
                 </div>
                 
@@ -341,14 +378,99 @@
 
   <!-- SQL Formatter Script -->
   <script>
-    var textarea = document.querySelector('textarea');
-    var code = document.querySelector('code');
+    const textarea = document.getElementById('sql-input');
+    const code = document.querySelector('#sql-output code');
+    const format = window.sqlFormatter.format;
 
-    var format = window.sqlFormatter.format;
+    function escapeHtml(str) {
+      return str
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+    }
 
-    textarea.addEventListener('input', function(event) {
-      code.innerText = format(event.target.value);
-    });
+    function highlightSql(sql) {
+      let html = escapeHtml(sql);
+
+      // Comments
+      html = html
+        .replace(/(--[^\n\r]*)/g, '<span class="sql-comment">$1</span>')
+        .replace(/(\/\*[\s\S]*?\*\/)/g, '<span class="sql-comment">$1</span>');
+
+      // Strings
+      html = html
+        .replace(/('(?:''|[^'])*')/g, '<span class="sql-string">$1</span>')
+        .replace(/("(?:\\"|[^"])*")/g, '<span class="sql-string">$1</span>');
+
+      // Numbers
+      html = html.replace(/\b\d+(?:\.\d+)?\b/g, '<span class="sql-number">$&</span>');
+
+      // Keywords
+      const keywordPattern = /\b(SELECT|FROM|WHERE|JOIN|INNER|LEFT|RIGHT|FULL|OUTER|ON|GROUP|BY|ORDER|HAVING|LIMIT|INSERT|INTO|VALUES|UPDATE|SET|DELETE|CREATE|TABLE|ALTER|DROP|INDEX|AND|OR|NOT|IN|IS|NULL|AS|DISTINCT|UNION|ALL|CASE|WHEN|THEN|ELSE|END|LIKE|EXISTS|BETWEEN|OFFSET|TOP)\b/gi;
+      html = html.replace(keywordPattern, '<span class="sql-keyword">$1</span>');
+
+      // Functions
+      const functionPattern = /\b(AVG|COUNT|SUM|MIN|MAX|NOW|COALESCE|IFNULL|NVL|UPPER|LOWER|SUBSTR|SUBSTRING|TRIM|ROUND|CAST|CONVERT)\b/gi;
+      html = html.replace(functionPattern, '<span class="sql-function">$1</span>');
+
+      return html;
+    }
+
+    function getIndentString() {
+      const select = document.getElementById('indentation-size');
+      if (!select) return '    ';
+      const value = select.value;
+      if (value === 'tab') return '\t';
+      const size = parseInt(value, 10);
+      return Number.isNaN(size) ? '    ' : ' '.repeat(size);
+    }
+
+    function shouldUppercaseKeywords() {
+      const checkbox = document.getElementById('uppercase-keywords');
+      return checkbox ? checkbox.checked : true;
+    }
+
+    function formatAndRender() {
+      const input = textarea.value;
+      if (!input.trim()) {
+        code.innerHTML = '';
+        return;
+      }
+
+      const options = {
+        language: 'sql',
+        indent: getIndentString(),
+        uppercase: shouldUppercaseKeywords()
+      };
+
+      const formatted = format(input, options);
+      code.innerHTML = highlightSql(formatted);
+    }
+
+    if (textarea) {
+      textarea.addEventListener('input', formatAndRender);
+    }
+
+    const indentSelect = document.getElementById('indentation-size');
+    if (indentSelect) {
+      indentSelect.addEventListener('change', formatAndRender);
+    }
+
+    const uppercaseToggle = document.getElementById('uppercase-keywords');
+    if (uppercaseToggle) {
+      uppercaseToggle.addEventListener('change', formatAndRender);
+    }
+
+    const formatBtn = document.getElementById('format-btn');
+    if (formatBtn) {
+      formatBtn.addEventListener('click', function (e) {
+        e.preventDefault();
+        formatAndRender();
+      });
+    }
+
     document.getElementById('copy-output-btn').addEventListener('click', function() {
       const output = document.getElementById('sql-output').innerText;
       if (!output.trim()) return;
@@ -363,6 +485,7 @@
         }, 2000);
       });
     });
+
     function openMonetagLink(url) {
       window.open(url, '_blank', 'noopener,noreferrer');
     }

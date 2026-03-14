@@ -99,7 +99,7 @@
 						                <h4 class="card-title">Messages List</h4>
 						            </div>
 						            <div class="card-body">
-						                <table id="messagesTable" class="table table-bordered table-striped">
+						                <table id="messagesTable" class="table table-bordered table-hover">
 						                    <thead>
 						                        <tr>
 						                            <th>Name</th>
@@ -107,16 +107,26 @@
 						                            <th>Message</th>
 						                            <th>Date</th>
 						                            <th>Status</th>
-						                            <th>Status</th>
+						                            <th>Actions</th>
 						                        </tr>
 						                    </thead>
 						                    <tbody>
 						                        <?php foreach ($getMessages as $msg): ?>
-						                            <tr>
+						                            <tr class="<?= $msg['isRead'] == null ? 'table-warning' : ''; ?>">
 						                                <td><?= htmlspecialchars($msg['name']) ?></td>
 						                                <td><?= htmlspecialchars($msg['email']) ?></td>
-						                                <td><?= htmlspecialchars($msg['message']) ?></td>
-						                                <td><?= $msg['submitted_at'] ?></td>
+						                                <td>
+						                                    <?php
+						                                        $preview = mb_substr($msg['message'], 0, 80);
+						                                        if (mb_strlen($msg['message']) > 80) {
+						                                            $preview .= '...';
+						                                        }
+						                                    ?>
+						                                    <span class="d-block text-truncate" style="max-width: 250px;">
+						                                        <?= htmlspecialchars($preview) ?>
+						                                    </span>
+						                                </td>
+						                                <td><?= date('M d, Y H:i', strtotime($msg['submitted_at'])) ?></td>
 						                                <td>
 											                <?php if ($msg['isRead'] == null): ?>
 											                    <span class="badge badge-danger">Unread</span>
@@ -125,6 +135,18 @@
 											                <?php endif; ?>
 											            </td>
 											            <td>
+											                <button 
+											                    type="button" 
+											                    class="btn btn-sm btn-info mb-1 btn-view-message"
+											                    data-toggle="modal"
+											                    data-target="#messageModal"
+											                    data-name="<?= htmlspecialchars($msg['name']) ?>"
+											                    data-email="<?= htmlspecialchars($msg['email']) ?>"
+											                    data-date="<?= date('M d, Y H:i', strtotime($msg['submitted_at'])) ?>"
+											                    data-message="<?= htmlspecialchars($msg['message']) ?>"
+											                >
+											                    View
+											                </button>
 											                <?php if ($msg['isRead'] == null): ?>
 											                    <form method="post" action="mark_read.php" style="display:inline;">
 											                        <input type="hidden" name="id" value="<?= $msg['id'] ?>">
@@ -163,10 +185,40 @@
 <script src="assets/js/ready.min.js"></script>
 <script src="assets/js/demo.js"></script>
 </html>
+<div class="modal fade" id="messageModal" tabindex="-1" role="dialog" aria-labelledby="messageModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="messageModalLabel">Message Details</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p><strong>Name:</strong> <span id="modalName"></span></p>
+                <p><strong>Email:</strong> <span id="modalEmail"></span></p>
+                <p><strong>Date:</strong> <span id="modalDate"></span></p>
+                <hr>
+                <p><strong>Message:</strong></p>
+                <p id="modalMessage" style="white-space: pre-wrap;"></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
 <script>
     $('#messagesTable').DataTable({
         pageLength: 10,
-        order: [[ 3, "ASC" ]]
+        order: [[ 3, "DESC" ]]
+    });
+
+    $(document).on('click', '.btn-view-message', function () {
+        var button = $(this);
+        $('#modalName').text(button.data('name'));
+        $('#modalEmail').text(button.data('email'));
+        $('#modalDate').text(button.data('date'));
+        $('#modalMessage').text(button.data('message'));
     });
 </script>
-
