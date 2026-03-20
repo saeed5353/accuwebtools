@@ -126,7 +126,9 @@
 						                                        <?= htmlspecialchars($preview) ?>
 						                                    </span>
 						                                </td>
-						                                <td><?= date('M d, Y H:i', strtotime($msg['submitted_at'])) ?></td>
+	                                <td data-order="<?= (int)strtotime($msg['submitted_at']) ?>">
+	                                    <?= date('M d, Y H:i', strtotime($msg['submitted_at'])) ?>
+	                                </td>
 						                                <td>
 											                <?php if ($msg['isRead'] == null): ?>
 											                    <span class="badge badge-danger">Unread</span>
