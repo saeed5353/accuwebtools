@@ -387,8 +387,7 @@
         .replace(/&/g, '&amp;')
         .replace(/</g, '&lt;')
         .replace(/>/g, '&gt;')
-        .replace(/"/g, '&quot;')
-        .replace(/'/g, '&#39;');
+        .replace(/"/g, '&quot;');
     }
 
     function highlightSql(sql) {
@@ -401,8 +400,7 @@
 
       // Strings
       html = html
-        .replace(/('(?:''|[^'])*')/g, '<span class="sql-string">$1</span>')
-        .replace(/("(?:\\"|[^"])*")/g, '<span class="sql-string">$1</span>');
+        .replace(/('(?:''|[^'])*')/g, '<span class="sql-string">$1</span>');
 
       // Numbers
       html = html.replace(/\b\d+(?:\.\d+)?\b/g, '<span class="sql-number">$&</span>');
