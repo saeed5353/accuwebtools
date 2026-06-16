@@ -8,6 +8,12 @@
   <title>About Us</title>
   <meta name="description" content="Free YouTube thumbnail downloader tool. Download HD/SD thumbnails from any YouTube video instantly. Works for youtube.com and youtu.be links.">
   <meta name="keywords" content="">
+  <?php
+    $seoTitle = 'About Us - AccuWebTools';
+    $seoDescription = 'Learn about AccuWebTools — free, accurate online tools for PDF merging, OCR, QR codes, formatters, and everyday digital tasks.';
+    $seoUrl = 'https://accuwebtools.com/about';
+    include '../includes/seo-meta.php';
+  ?>
 
   <!-- Favicons -->
   <link href="../assets/img/favicon.png" rel="icon" height="100px">

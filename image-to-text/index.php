@@ -8,6 +8,12 @@
   <title>Image to Text Converter - Extract Text from Images Online | Free OCR Tool</title>
   <meta name="description" content="Free online OCR tool to extract text from images (JPG, PNG, HEIC). Convert pictures to text instantly with our accurate image to text converter. No registration required.">
   <meta name="keywords" content="image to text, pic to text, image text to text, text from image to text, text in image to text, text from pic, text from pictures, imagen to text, image to text converter, picture to text converter, image text to text converter, transform picture to text, convert text to picture, extracting text from image, picture to text, copy text from image, copy text from picture, copy the text from image, text from an image, copy picture text, copy text on image, copy picture to text, copy text from pic, image to text image, text by image, picture to words converter, ocr online, jpg to text, jpeg to text, from picture to text, convert image text to text, turn photo into text, jpeg text, ocr reader online, photo to text, text generator from image, image into text generator, picture text generator, pic to text converter, photo into text, image in text, text to pic, pdf to word ocr, image to text online, jpg to text converter, picture to text online, image to text converter free, pic to text online, jpeg to text converter, pdf to doc ocr, picture text, online picture to text">
+  <?php
+    $seoTitle = 'Image to Text Converter - Extract Text from Images Online | Free OCR Tool';
+    $seoDescription = 'Free online OCR tool to extract text from images (JPG, PNG, HEIC). Convert pictures to text instantly with our accurate image to text converter. No registration required.';
+    $seoUrl = 'https://accuwebtools.com/image-to-text';
+    include '../includes/seo-meta.php';
+  ?>
 
   <!-- Favicons -->
   <link href="../assets/img/favicon.png" rel="icon">

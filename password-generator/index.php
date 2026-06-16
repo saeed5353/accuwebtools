@@ -8,6 +8,12 @@
   <title>Password Generator - Create Strong & Secure Passwords</title>
   <meta name="description" content="Free online password generator tool. Create strong, secure, random passwords with customizable options including length, special characters, numbers, and uppercase letters.">
   <meta name="keywords" content="password generator, password gen, pw generator, pw gen, passwordgen, psw generator, password password generator, random password generator, lastpass password generator, strong password generator, password generator free, norton password generator, password creator, last password generator, random password gen, create random password, lastpass random password generator, lastpass password gen, lastpass random password, 12 character password generator, random password generator lastpass, last pass password gen, strong password gen, random password maker, 15 character password generator, password generator, random password generator, strong password generator, password generator free, password gen, pw generator, random password gen, create random password, pw gen, passwordgen, psw generator, strong password gen, random password maker, free password creator, strong pass gen, random password creator, password generator 10 characters">
+  <?php
+    $seoTitle = 'Password Generator - Create Strong & Secure Passwords';
+    $seoDescription = 'Free online password generator tool. Create strong, secure, random passwords with customizable options including length, special characters, numbers, and uppercase letters.';
+    $seoUrl = 'https://accuwebtools.com/password-generator';
+    include '../includes/seo-meta.php';
+  ?>
 
   <!-- Favicons -->
   <link href="../assets/img/favicon.png" rel="icon">

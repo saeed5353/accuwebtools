@@ -8,6 +8,12 @@
   <title>Age Calculator - Calculate Your Exact Age in Years, Months, Days</title>
   <meta name="description" content="Free online age calculator tool. Calculate your exact age in years, months, days, hours, minutes and seconds from your date of birth. Find out how old you are today.">
   <meta name="keywords" content="age calculator, age calculation calculator, calculate your age, birthday calculator, age calculator by birth date, age calculator how old am i, birth date age calculator, born date calculator, calculate age using date of birth, calculate how old i am, date of birth and age calculator, find age by dob, get age from date of birth, year born calculator, biological age calculator, age finder, dob calculator, age calculator app, find age, age and date calculator, age by birth date, age calculator by dob, calculate current age, calculate exact age, calculate my age">
+  <?php
+    $seoTitle = 'Age Calculator - Calculate Your Exact Age in Years, Months, Days';
+    $seoDescription = 'Free online age calculator tool. Calculate your exact age in years, months, days, hours, minutes and seconds from your date of birth. Find out how old you are today.';
+    $seoUrl = 'https://accuwebtools.com/age-calculator';
+    include '../includes/seo-meta.php';
+  ?>
 
   <!-- Favicons -->
   <link href="../assets/img/favicon.png" rel="icon">

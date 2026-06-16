@@ -7,6 +7,12 @@
     <title>XML Formatter Online - Beautify, Validate & Format XML Data</title>
     <meta name="description" content="Free online XML formatter and validator tool. Beautify, minify, validate, and format XML data with our powerful XML viewer. Works as Chrome extension too.">
     <meta name="keywords" content="xml formatter, xml formatter online, xml beautify, xml file formatter, beautifier xml, xml data format, xml indent online, xml beautifier online, free xml formatter, notepad xml formatter, xml prettifier, xml validator, xml linter, xml parser online, xml viewer">
+    <?php
+      $seoTitle = 'XML Formatter Online - Beautify, Validate & Format XML Data';
+      $seoDescription = 'Free online XML formatter and validator tool. Beautify, minify, validate, and format XML data with our powerful XML viewer. Works as Chrome extension too.';
+      $seoUrl = 'https://accuwebtools.com/xml-formatter';
+      include '../includes/seo-meta.php';
+    ?>
 
     <!-- Favicons -->
     <link href="../assets/img/favicon.png" rel="icon">

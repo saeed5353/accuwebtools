@@ -8,6 +8,12 @@
   <title>Base64 Encoder/Decoder - Free Online Base64 Converter Tool</title>
   <meta name="description" content="Free online Base64 encoder and decoder tool. Encode text to Base64 or decode Base64 to text instantly. No registration required. Works with strings, images, and files.">
   <meta name="keywords" content="base64 encoder, base64 decoder, base64 encode, base64 decode, base64 converter, base64 online, base64 encode decode, base64 string, base64 text, base64 image, base64 to text, text to base64, base64 encoding, base64 decoding, free base64 tool, online base64 encoder, base64 decode online, base64 encode online, base64 translator, base64 codec">
+  <?php
+    $seoTitle = 'Base64 Encoder/Decoder - Free Online Base64 Converter Tool';
+    $seoDescription = 'Free online Base64 encoder and decoder tool. Encode text to Base64 or decode Base64 to text instantly. No registration required. Works with strings, images, and files.';
+    $seoUrl = 'https://accuwebtools.com/base64-encoder-decoder';
+    include '../includes/seo-meta.php';
+  ?>
 
   <!-- Favicons -->
   <link href="../assets/img/favicon.png" rel="icon">

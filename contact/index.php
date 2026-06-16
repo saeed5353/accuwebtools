@@ -8,6 +8,12 @@
   <title>AccuWebTools - Accurate & Free Online Tools for Everyday Tasks</title>
   <meta name="description" content="AccuWebTools offers free, accurate, and easy-to-use online tools including PDF mergers, image-to-text converters, YouTube thumbnail downloaders, age calculators, and more.">
   <meta name="keywords" content="free online tools, pdf merger, image to text, youtube thumbnail downloader, age calculator, word counter, text tools, convert pdf, extract text from image, web utilities">
+  <?php
+    $seoTitle = 'Contact - AccuWebTools';
+    $seoDescription = 'Get in touch with AccuWebTools. Questions, feedback, or partnership inquiries — we would love to hear from you.';
+    $seoUrl = 'https://accuwebtools.com/contact';
+    include '../includes/seo-meta.php';
+  ?>
 
   <!-- Favicons -->
   <link href="../assets/img/favicon.png" rel="icon">

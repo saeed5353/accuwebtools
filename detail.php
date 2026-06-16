@@ -8,6 +8,14 @@
   <title>Why Hostinger is the Best Budget Web Hosting in 2023 | AccuWebTools Blog</title>
   <meta name="description" content="Discover why Hostinger offers the best value budget web hosting in 2023 with our in-depth review covering performance, features, pricing, and more.">
   <meta name="keywords" content="hostinger review, best budget hosting, cheap web hosting, hostinger affiliate, web hosting comparison">
+  <?php
+    $seoTitle = 'Why Hostinger is the Best Budget Web Hosting in 2023 | AccuWebTools Blog';
+    $seoDescription = 'Discover why Hostinger offers the best value budget web hosting in 2023 with our in-depth review covering performance, features, pricing, and more.';
+    $seoUrl = 'https://accuwebtools.com/blog/hostinger-review';
+    $seoType = 'article';
+    $seoImage = 'https://accuwebtools.com/assets/img/blog/hostinger-review.jpg';
+    include '../includes/seo-meta.php';
+  ?>
 
   <!-- Favicons -->
   <link href="../assets/img/favicon.png" rel="icon" height="100px">

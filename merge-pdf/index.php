@@ -8,6 +8,12 @@
   <title>Merge PDF Online - Combine PDF Files Free | PDF Merger Tool</title>
   <meta name="description" content="Free online tool to merge PDF files. Combine multiple PDFs into one document quickly and easily. No registration required. Works on all devices.">
   <meta name="keywords" content="merge pdf, combine pdf, combine pdf files, merge pdf free, merge pdf online, merge pdf files, combine pdf online, pdf combiner free, combine pdf files free, merge pdf online free, combine pdfs into one pdf, combine pdfs into one, adobe combine pdf, merge pdf files free, combine two pdfs, combining pdf files into one, combine documents into one pdf, combine multiple pdfs into one, merge two pdfs, merge pdf documents, merge files into one pdf, pdf joiner, merge pdfs into one, combine 2 pdfs, merge documents into one pdf, unite pdf files">
+  <?php
+    $seoTitle = 'Merge PDF Online - Combine PDF Files Free | PDF Merger Tool';
+    $seoDescription = 'Free online tool to merge PDF files. Combine multiple PDFs into one document quickly and easily. No registration required. Works on all devices.';
+    $seoUrl = 'https://accuwebtools.com/merge-pdf';
+    include '../includes/seo-meta.php';
+  ?>
 
   <!-- Favicons -->
   <link href="../assets/img/favicon.png" rel="icon">

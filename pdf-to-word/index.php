@@ -8,6 +8,12 @@
   <title>PDF to Word Converter - Convert PDF to DOCX Online Free | PDF to Word Tool</title>
   <meta name="description" content="Free online tool to convert PDF files to Word documents (DOCX). Transform your PDFs into editable Word files with high accuracy. No registration required. Works on all devices.">
   <meta name="keywords" content="pdf to word, pdf pdf to word, convert pdf to word, convert pdf in to word, convert pdf to word format, convert pdf to word converter, pdf to word word converter, pdf convert to word converter, pdf to docx, pdf to doc, pdf to document, transfer pdf to word free, pdf to word doc, pdf to word document, pdf in to word, convert word to pdf">
+  <?php
+    $seoTitle = 'PDF to Word Converter - Convert PDF to DOCX Online Free | PDF to Word Tool';
+    $seoDescription = 'Free online tool to convert PDF files to Word documents (DOCX). Transform your PDFs into editable Word files with high accuracy. No registration required. Works on all devices.';
+    $seoUrl = 'https://accuwebtools.com/pdf-to-word';
+    include '../includes/seo-meta.php';
+  ?>
 
   <!-- Favicons -->
   <link href="../assets/img/favicon.png" rel="icon">

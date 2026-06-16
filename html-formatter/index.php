@@ -8,6 +8,12 @@
   <title>HTML Formatter - Free Online HTML Beautifier Tool</title>
   <meta name="description" content="Free online HTML formatter and beautifier tool. Format your HTML code with customizable options including indentation level, encoding, and more.">
   <meta name="keywords" content="html formatter, html5 formatter, beautify html, html formatter online, html beautifier online, beautify html code, html code format, html text formatter, free html formatter, html code formatter online">
+  <?php
+    $seoTitle = 'HTML Formatter - Free Online HTML Beautifier Tool';
+    $seoDescription = 'Free online HTML formatter and beautifier tool. Format your HTML code with customizable options including indentation level, encoding, and more.';
+    $seoUrl = 'https://accuwebtools.com/html-formatter';
+    include '../includes/seo-meta.php';
+  ?>
 
   <!-- Favicons -->
   <link href="../assets/img/favicon.png" rel="icon">

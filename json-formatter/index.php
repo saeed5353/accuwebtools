@@ -8,6 +8,12 @@
   <title>JSON Formatter Online - Beautify, Validate & Format JSON Data</title>
   <meta name="description" content="Free online JSON formatter and validator tool. Beautify, minify, validate, and format JSON data with our powerful JSON viewer. Works as Chrome extension too.">
   <meta name="keywords" content="json formatter online, json beautifier online, json file formatter, best json formatter, chrome plugin for json formatter, codebeautify json, extension json formatter, free json formatter, free online json formatter, json beautifier chrome, json data formatter, json format chrome extension, json formatter & validator, json formatter and validator, json formatter example, json prettifier, json viewer online, json validator, json linter, json parser online">
+  <?php
+    $seoTitle = 'JSON Formatter Online - Beautify, Validate & Format JSON Data';
+    $seoDescription = 'Free online JSON formatter and validator tool. Beautify, minify, validate, and format JSON data with our powerful JSON viewer. Works as Chrome extension too.';
+    $seoUrl = 'https://accuwebtools.com/json-formatter';
+    include '../includes/seo-meta.php';
+  ?>
 
   <!-- Favicons -->
   <link href="../assets/img/favicon.png" rel="icon">

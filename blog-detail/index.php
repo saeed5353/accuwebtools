@@ -63,10 +63,20 @@
     <title><?php echo htmlspecialchars($post['title']); ?></title>
     <meta name="description" content="<?php echo htmlspecialchars($post['meta_description']); ?>">
     <meta name="keywords" content="<?php echo htmlspecialchars($post['meta_keywords']); ?>">
+    <?php
+      $seoTitle = $post['title'];
+      $seoDescription = $post['meta_description'];
+      $seoUrl = 'https://accuwebtools.com/blog-detail/' . rawurlencode($post['slug']);
+      $seoType = 'article';
+      if (!empty($post['image'])) {
+        $seoImage = 'https://accuwebtools.com/uploads/' . $post['image'];
+      }
+      include '../includes/seo-meta.php';
+    ?>
 
     <!-- Favicons -->
     <link href="../assets/img/favicon.png" rel="icon" height="100px">
-    <link rel="canonical" href="https://accuwebtools.com" />
+    <link rel="canonical" href="<?php echo htmlspecialchars($seoUrl); ?>" />
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com" rel="preconnect">

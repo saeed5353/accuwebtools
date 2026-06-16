@@ -35,6 +35,12 @@
   <title>Blog - AccuWebTools</title>
   <meta name="description" content="Read the latest guides, tutorials, and articles from AccuWebTools. Stay updated with web hosting, online tools, and digital marketing tips.">
   <meta name="keywords" content="accuwebtools blog, tech blog, free tools blog, hosting guides, seo tips, digital marketing blog">
+  <?php
+    $seoTitle = 'Blog - AccuWebTools';
+    $seoDescription = 'Read the latest guides, tutorials, and articles from AccuWebTools. Stay updated with web hosting, online tools, and digital marketing tips.';
+    $seoUrl = 'https://accuwebtools.com/blog';
+    include '../includes/seo-meta.php';
+  ?>
 
   <link href="../assets/img/favicon.png" rel="icon">
   <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">

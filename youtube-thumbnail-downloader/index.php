@@ -8,6 +8,12 @@
   <title>YouTube Thumbnail Downloader - Get HD Thumbnails from Videos</title>
   <meta name="description" content="Free YouTube thumbnail downloader tool. Download HD/SD thumbnails from any YouTube video instantly. Works for youtube.com and youtu.be links.">
   <meta name="keywords" content="youtube thumbnail downloader, yt thumbnail downloader, thumbnail downloader, yt thumb downloader, download thumbnail from youtube, thumbnail grabber, youtube video thumbnail download, download youtube video thumbnail, youtube thumbnail download hd, down thumbnail youtube, download thumbnail of youtube video, youtube thamble download, youtube video thamble download, yt video thumbnail download, youtube thumbnail grabber, get youtube thumbnail, get thumbnail from youtube">
+  <?php
+    $seoTitle = 'YouTube Thumbnail Downloader - Get HD Thumbnails from Videos';
+    $seoDescription = 'Free YouTube thumbnail downloader tool. Download HD/SD thumbnails from any YouTube video instantly. Works for youtube.com and youtu.be links.';
+    $seoUrl = 'https://accuwebtools.com/youtube-thumbnail-downloader';
+    include '../includes/seo-meta.php';
+  ?>
 
   <!-- Favicons -->
   <link href="../assets/img/favicon.png" rel="icon">

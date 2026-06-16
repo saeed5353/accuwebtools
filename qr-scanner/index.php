@@ -8,6 +8,12 @@
   <title>QR & Barcode Scanner - Scan QR Codes and Barcodes Online</title>
   <meta name="description" content="Free online QR code and barcode scanner. Scan codes using your webcam, upload images, or drag and drop files. Supports all major barcode types including QR, CODE128, EAN-13, and UPC-A.">
   <meta name="keywords" content="qr code scanner, qr photo scanner, barcode scanner, upc scanner, item scanner, qr scanner online, barcode reader online, scan qr code from picture, free qr code scanner, barcode scanner online, qr code reader online, qr reader online, barcode detector, scan barcode scanner">
+  <?php
+    $seoTitle = 'QR & Barcode Scanner - Scan QR Codes and Barcodes Online';
+    $seoDescription = 'Free online QR code and barcode scanner. Scan codes using your webcam, upload images, or drag and drop files. Supports all major barcode types including QR, CODE128, EAN-13, and UPC-A.';
+    $seoUrl = 'https://accuwebtools.com/qr-barcode-scanner';
+    include '../includes/seo-meta.php';
+  ?>
 
   <!-- Favicons -->
   <link href="../assets/img/favicon.png" rel="icon">

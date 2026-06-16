@@ -8,6 +8,12 @@
   <title>Word Counter - Count Words, Characters & More | Free Online Tool</title>
   <meta name="description" content="Free online word counter tool. Count words, characters, sentences, and paragraphs instantly. Perfect for essays, articles, and social media posts with detailed statistics.">
   <meta name="keywords" content="word counter, character counter, word count counter, count the words in word, count word count, words count in word, word counter online, word count checker, character count online, count number of words online, calculate characters online, count of words online, number of word checker, word count in word online, essay word counter, word counter tool, word counter website, word calculator, keyword counter, word counter google docs, word counter for google docs, free word counter, count number of words, word count calculator, character checker, paragraph counter, count how many words, counting tool">
+  <?php
+    $seoTitle = 'Word Counter - Count Words, Characters & More | Free Online Tool';
+    $seoDescription = 'Free online word counter tool. Count words, characters, sentences, and paragraphs instantly. Perfect for essays, articles, and social media posts with detailed statistics.';
+    $seoUrl = 'https://accuwebtools.com/word-counter';
+    include '../includes/seo-meta.php';
+  ?>
 
   <!-- Favicons -->
   <link href="../assets/img/favicon.png" rel="icon">
