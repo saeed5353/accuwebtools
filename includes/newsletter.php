@@ -2,7 +2,7 @@
 // Database connection config
 $host = "localhost";
 $user = "u915156841_tech";       
-$password = "cc%8cVr3NQ";       
+$password = "Tech3535!!";       
 $database = "u915156841_accuwebtools";
 
 // Connect to MySQL

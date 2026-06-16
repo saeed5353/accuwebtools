@@ -1,6 +1,6 @@
 <?php
 // Database connection
-$conn = new mysqli("localhost", "root", "", "toolsdb");
+$conn = new mysqli("localhost", "u915156841_tech", "Tech3535!!", "u915156841_accuwebtools");
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
